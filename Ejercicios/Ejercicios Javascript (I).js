@@ -24,7 +24,12 @@ ACTIVIDAD 3
 Anida dos bucles for y muestra por la consola el resultado de los dos
 índices en cada iteración. Realiza 10 iteraciones en cada bucle.
 */
-
+for (var i = 1; i < 11; i++) {
+    for (var j = 1; j < 11; j++) {
+        console.log(i+"-"+j);
+    };
+    
+};
 /*
 ACTIVIDAD 4
 En este reto deberás mostrar el número posterior a un número introducido
