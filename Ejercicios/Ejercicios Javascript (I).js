@@ -75,6 +75,13 @@ solicitar al usuario que introduzca un número entero, calcular y sumar los 5
 números siguientes e imprimir el resultado por la consola, y volver a repetir
 este proceso 5 veces más.
 */
+var numUsuario;
+numUsuario = prompt("Introduce un número entero: ");
+var resultado =0;
+for (let i = 1; i < 6; i++) {
+   resultado += parseInt(numUsuario)+i
+    
+}
 
 
 /*
