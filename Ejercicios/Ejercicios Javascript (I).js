@@ -26,9 +26,9 @@ Anida dos bucles for y muestra por la consola el resultado de los dos
 */
 for (var i = 1; i < 11; i++) {
     for (var j = 1; j < 11; j++) {
-        console.log(i+"-"+j);
+        console.log(i + "-" + j);
     };
-    
+
 };
 /*
 ACTIVIDAD 4
@@ -83,3 +83,17 @@ Hacer un juego para que el usuario averigüe la capital de un país previamente
 definida. Tiene tres intentos y debe mostrase en pantalla si ha acertado o no,
 incluyendo en este caso el número de intentos que le quedan.
 */
+var palabraGanadora = "FRANCIA";
+var palabraUsuario = "";
+var intentos = 3;
+
+do {
+    intentos--;
+    palabraUsuario = prompt("Introduce el país: ");
+    if (palabraUsuario.toUpperCase() == palabraGanadora) {
+        console.log("Correcto");
+        intentos = 0;
+    } else {
+        console.log("Incorrecto, te quedan " + intentos);
+    };
+} while (intentos > 0);
