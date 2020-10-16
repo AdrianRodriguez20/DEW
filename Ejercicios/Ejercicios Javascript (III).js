@@ -26,6 +26,6 @@ sean números e ignorar los que no lo sean, mostrando un aviso (por ejemplo: ¡A
  3 "Hola" no es un número, lo ignoramos").
  */
 
-function SumaYmedia ( num1 = isRequired()){}
+function SumaYmedia ( num1 = isRequired()){
     
 }
