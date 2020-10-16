@@ -219,7 +219,7 @@ function tiempoTranscurrido(fechaNacimiento, unidad) {
    fechaParse = Date.parse(fechaNacimiento);
    fechaActual = new Date()
 
-var dia = fechaActual.getDay();
+var dia = fechaActual.getDate();
 var mes = fechaActual.getMonth();
 var anio =fechaActual.getFullYear();
 
@@ -250,3 +250,17 @@ var fechaFormat = anio+"-"+mes+"-"+dia;
 en formato hh:mm:ss (en texto). Por ejemplo, 8.25 = “8:15:00” y 10.12 = “10:07:12”.Implementar 
 también la función inversa hms2hdec(h,m,s).
 */
+function hdec2hms(x) {
+
+    var arrayHora= x.split(".");
+    var hora=arrayHora[0];
+    var  minuto= parseInt(parseInt(arrayHora[1])*0.6);
+    var segundo= parseInt(((parseInt(arrayHora[1])*0.6)-(minuto))*100);
+   
+
+    
+
+    var horaImprimible = hora + " : " + minuto + " : " + segundo;
+
+    return horaImprimible;
+}

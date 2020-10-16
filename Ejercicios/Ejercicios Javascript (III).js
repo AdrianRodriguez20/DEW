@@ -3,29 +3,20 @@ comprobar que el segundo parámetro es realmente un único carácter), nos diga
  cuántas veces aparece el carácter en el texto.
  */
 
-function toCharArray(texto){ //esta función convierte un texto en un array 
-    charArray =[]; 
-    for(var i=0;i<texto.length;i++){
-         charArray.push(texto[i]);
-    }
-
-    return charArray;
-}
-
- function numCaracteres ( texto = isRequired(), caracter  = isRequired()){
- var vecesCaracter=0 ;
-
-   var array= toCharArray(texto); // guardamos la funcion en un array, así guardamos cada caracter por separado
-
-     for (let i = 0; i < array.length; i++) {  //recorremos el bucle buscando coincidencias 
-        if (array[i]==caracter){
-            vecesCaracter++;
-        }
-         
-     }
-    
-   return vecesCaracter;
- }
+function numCaracteres ( texto = isRequired(), caracter  = isRequired()){
+  var vecesCaracter=0 ;
+ 
+    var array= texto.split(''); //con un split separamos todas las letras y las guardamos en un array
+ 
+      for (let i = 0; i < array.length; i++) {  //recorremos el bucle buscando coincidencias
+         if (array[i].toLowerCase()==caracter.toLowerCase()){ // tanto las letras del array y el cáracter a buscar los pasamos a mnúsculas para que no existan errores a la hora de contar
+             vecesCaracter++; // incrementamos las veces que aparece el caracter con cada iteración
+         }
+          
+      }
+     
+    return vecesCaracter;
+  }
 
  /*
  Escribir una función que acepte al menos un argumento (el primer argumento debe ser obligatorio, 
@@ -35,6 +26,6 @@ sean números e ignorar los que no lo sean, mostrando un aviso (por ejemplo: ¡A
  3 "Hola" no es un número, lo ignoramos").
  */
 
-function SumaYmedia ( num1 = isRequired(),...){
+function SumaYmedia ( num1 = isRequired()){}
     
 }
