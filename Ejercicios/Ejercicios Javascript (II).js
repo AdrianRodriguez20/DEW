@@ -252,15 +252,21 @@ también la función inversa hms2hdec(h,m,s).
 */
 function hdec2hms(x) {
 
-    var arrayHora= x.split(".");
+    var arrayHora= x.split(".");   
     var hora=arrayHora[0];
     var  minuto= parseInt(parseInt(arrayHora[1])*0.6);
     var segundo= parseInt(((parseInt(arrayHora[1])*0.6)-(minuto))*100);
    
-
-    
-
     var horaImprimible = hora + " : " + minuto + " : " + segundo;
+
+    return horaImprimible;
+}
+
+function inversaHdec2hms (x){
+    var arrayHora= x.split(":"); 
+    var hora=arrayHora[0];
+    var decimal =  parseInt(arrayHora[1])+(parseInt(arrayHora[2])/60)
+    var horaImprimible = hora + "." + decimal ;
 
     return horaImprimible;
 }
