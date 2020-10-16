@@ -215,35 +215,25 @@ indicar en qué unidad se quiere obtener el resultado: ‘d’ → días, ‘h�
 */
 
 function tiempoTranscurrido(fechaNacimiento, unidad) {
-  var resultado;
-   fechaParse = Date.parse(fechaNacimiento);
-   fechaActual = new Date()
+    var resultado;
+    var fechaUsuario = new Date(fechaNacimiento);
+    var fechaActual = new Date();
+    var diferenciaMs = fechaActual -fechaUsuario  ;
 
-var dia = fechaActual.getDate();
-var mes = fechaActual.getMonth();
-var anio =fechaActual.getFullYear();
-
-var fechaFormat = anio+"-"+mes+"-"+dia;
-
-   fechaActualParse = Date.parse(FechaFormat);
     switch (unidad) {
-        case "d":
-            resultado  ;
+        case "d": resultado = diferenciaMs / 86400000;
             break;
-        case "h":
-            resultado;
+        case "h": resultado = diferenciaMs / 3600000;
             break;
-        case "m":
-            resultado;
+        case "m": resultado = diferenciaMs / 60000;
             break;
-        case "s":
-            resultado;
+        case "s": resultado = diferenciaMs / 1000;
             break;
         default:
-            console.log("Error , fecha mal introducida.");
+                 console.log("Error , fecha mal introducida.");
             break;
     }
-
+    return resultado;
 }
 /*
 13. Implementar una función hdec2hms(x) que transforme una hora en formato decimal a su equivalente 
@@ -252,21 +242,102 @@ también la función inversa hms2hdec(h,m,s).
 */
 function hdec2hms(x) {
 
-    var arrayHora= x.split(".");   
-    var hora=arrayHora[0];
-    var  minuto= parseInt(parseInt(arrayHora[1])*0.6);
-    var segundo= parseInt(((parseInt(arrayHora[1])*0.6)-(minuto))*100);
-   
+    var arrayHora = x.split(".");
+    var hora = arrayHora[0];
+    var minuto = parseInt(parseInt(arrayHora[1]) * 0.6);
+    var segundo = parseInt(((parseInt(arrayHora[1]) * 0.6) - (minuto)) * 100);
+
     var horaImprimible = hora + " : " + minuto + " : " + segundo;
 
     return horaImprimible;
 }
 
-function inversaHdec2hms (x){
-    var arrayHora= x.split(":"); 
-    var hora=arrayHora[0];
-    var decimal =  parseInt(arrayHora[1])+(parseInt(arrayHora[2])/60)
-    var horaImprimible = hora + "." + decimal ;
+function inversaHdec2hms(x) {
+    var arrayHora = x.split(":");
+    var hora = arrayHora[0];
+    var decimal = ((parseInt(arrayHora[1]) + (parseInt(arrayHora[2]) / 60)) / 60);
+    var decimalImprimir = String(decimal).match(/.[0-9][0-9]/);
+    var horaImprimible = hora + decimalImprimir;
 
     return horaImprimible;
+}
+
+/*
+14. Como hemos visto, javascript, como muchos otros lenguajes, utilizan el “UNIX EPOCH” 
+que cuenta el tiempo a partir de la medianoche del 1 de enero de 1970. Sin embargo, 
+hay otros tipos de fecha que tienen otro origen del tiempo. Por ejemplo, la fecha juliana 
+empieza a contabilizar el tiempo desde las 12:00 (mediodía) del 1 de enero de 4713 a.C., 
+e indica el número de días (y fracciones) que han transcurrido desde ese momento. La fecha 
+juliana se suele utilizar para calcular el tiempo que ha transcurrido desde eventos que 
+sucedieron en la antigüedad y es aún ampliamente usada para fenómenos astronómicos e 
+históricos lejanos. En la wikipedia (https://es.wikipedia.org/wiki/Fecha_juliana) 
+se puede encontrar la relación entre fecha juliana y tiempo Unix (contado a partir desde 1/1/1970), 
+siendo esta:
+
+fecha_juliana = tiempo_unix + 2440587.5
+
+Implementar una función que dada una fecha en texto (por ejemplo “2018-09-20”), 
+devuelva la fecha juliana equivalente.
+
+Para realizar la suma, ten en cuenta que la fecha juliana almacena días, mientras que el tiempo_unix 
+en javascript contiene milisegundos, por lo que hay que transformarlo en días. Por cierto, 
+¿de dónde crees que ha salido el valor 2440587.5?
+*/
+
+function fechaJuliana(fechaGregoriana) {
+    var fechaUsuario = new Date(fechaGregoriana);
+    var fechaUnix = new Date('1970-1-1');
+    var diasMs = 86400000;
+    var diferenciaMs = fechaUsuario - fechaUnix;
+    var diferenciaEnDias = diferenciaMs / diasMs;
+
+    fechaJuliana = diferenciaEnDias + 2440587.5;
+    return fechaJuliana;
+}
+
+/*
+15. Cuando hablamos de ángulos, normalmente utilizamos los grados sexagesimales (se suelen representar como “deg”,
+     una circunferencia completa son 360º deg). Sin embargo, en trigonometría es más común utilizar los radianes 
+     (“rad”, una circunferencia completa son 2π rad).
+
+De esta forma, 360º equivalen a 2π. Las funciones trigonométricas de javascript, como la mayoría de lenguajes, 
+trabajan en radianes, sin embargo en muchas ocasiones nosotros vamos a querer trabajaren grados. Por ello, se pide:
+
+a) Implementar una función llamada deg2rad(x) que transforme de grados a radianes, y su inversa rad2deg(x)
+*/
+function deg2rad(x) {
+    return x * Math.PI / 180;
+}
+
+function rad2deg(x) {
+    return x * 180 / Math.PI;
+}
+
+/*
+b) Implementar una función sinDeg(x)que devuelva el seno del ángulo x y otra función cosDeg(x) que devuelva 
+el coseno del ángulo x (en ambos casos x está en grados).
+*/
+
+function sinDeg(x) {
+    return Math.sin(x * Math.PI / 180);
+}
+
+function cosDeg(x) {
+    return Math.cos(x * Math.PI / 180)
+}
+
+/*
+c) El seno y el coseno están relacionados por la siguiente ecuación: sin2x + cos2x = 1.
+Utilizar esta relación para implementar una función sinDegAlt(x) que obtenga el seno de un ángulo x (en grados)
+usando para ello la función cosDeg(x) anteriormente implementada.
+*/
+function sinDegAlt(x) {
+    return Math.sqrt(1 - Math.pow(cosDeg(x), 2));
+}
+/*
+Implementar también la función inversa al apartado anterior: cosDegAlt(x) usando para ello sinDeg(x)
+*/
+
+function cosDegAlt(x) {
+    return
 }
