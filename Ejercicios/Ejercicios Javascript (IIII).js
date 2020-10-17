@@ -5,12 +5,29 @@
 /*
 2-    Realiza una función sumatoria utilizando “arguments”. Utiliza un bucle for. El usuario debe introducir 7 números. Resultado muéstralo en consola.
 */
-
+function sumatorio (){
+    var resultado=0;
+    for (let i = 0; i < arguments.length; i++) {
+      resultado+=arguments[i];
+        
+    }
+    return resultado;
+}
 
 /*
 3-    Realiza una función que calcule la media de 5 notas introducidas por el usuario. Utiliza “arguments”. Muestra el resultado por consola.
 */
-
+function media (){
+    var media=0;
+    var suma=0;
+    for (let i = 0; i < arguments.length; i++) {
+      suma+=arguments[i] ;
+        
+    }
+    media = suma/arguments.length;
+    
+    return media;
+}
 /*
 4-    Realiza la validación de una matrícula de un coche 0000-XXX mediante expresiones regulares.
 */

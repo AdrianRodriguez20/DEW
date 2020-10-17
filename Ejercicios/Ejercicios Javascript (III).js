@@ -88,7 +88,7 @@ Crear una función que genere un array aleatorio, usando 3 parámetros: número 
 (por defecto 10, valor mínimo del elemento (por defecto 100), valor máximo (por defecto 200).
 */
 
-function arrayAleatorio(numElementos = 10, valorMin = 100, valorMax = 200) { //revisar limites
+function arrayAleatorio(numElementos = 10, valorMin = 100, valorMax = 200) { 
   var arrayAleatorio = new Array(numElementos);
   for (let i = 0; i < arrayAleatorio.length; i++) {
     arrayAleatorio[i] = Math.floor(Math.random() * (valorMax - valorMin + 1)) + (valorMin);
@@ -141,7 +141,8 @@ x <= -5: Eliminar el primer elemento del array
 -5 < x <= 0: Eliminar el último elemento del array
 0 < x <=  10: Añadir x al principio del array
 10 < x <=  10: Añadir x al final del array
-Mostrar un mensaje de texto para cada número indicando el valor de x, la operación realizada (eliminar o añadir, al principio o al final), el número añadido/eliminado y el tamaño del array tras realizar la operación
+Mostrar un mensaje de texto para cada número indicando el valor de x, la operación realizada (eliminar o añadir, al principio o al final), el número añadido/eliminado 
+y el tamaño del array tras realizar la operación
 */
 
 /*
