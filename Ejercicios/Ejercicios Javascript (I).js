@@ -6,7 +6,7 @@ No podrás utilizar el operador aritmético de elevar a una potencia.
 var base = 15;
 var resultado = 1;
 for (var i = 0; i < 6; i++) {
-    resultado *= base;
+    resultado *= base; // con cada iteración 1*=15 , 15*=15 , 225*=15 , 3375*=15 ,.... 
 };
 /*
 ACTIVIDAD 2
@@ -90,14 +90,14 @@ Hacer un juego para que el usuario averigüe la capital de un país previamente
 definida. Tiene tres intentos y debe mostrase en pantalla si ha acertado o no,
 incluyendo en este caso el número de intentos que le quedan.
 */
-var palabraGanadora = "FRANCIA";
+var palabraGanadora = "PARIS"; //establecemos la capital
 var palabraUsuario = "";
-var intentos = 3;
+var intentos = 3; 
 
 do {
-    intentos--;
-    palabraUsuario = prompt("Introduce el país: ");
-    if (palabraUsuario.toUpperCase() == palabraGanadora) {
+    intentos--; //contador para cada vez que falle , se decrementen los intentos
+    palabraUsuario = prompt("Introduce la capital de Francia: ");
+    if (palabraUsuario.toUpperCase() == palabraGanadora) { // la palabra del usuario la pasamos a mayusculas para que no haya ningún error , y comprobamos 
         console.log("Correcto");
         intentos = 0;
     } else {

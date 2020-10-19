@@ -84,12 +84,11 @@ while (result > 0) {
   result = res1 + res2;
   console.log(result);
 }
-
+*/
+/*
 a) Cambia el bucle while usando continue y break para que si hay una raíz cuadrada de un número negativo 
 directamente pase a la siguiente iteración. En el caso de haber una división por cero, el bucle debe 
 detenerse inmediatamente.
-b) Prueba a realizar el apartado anterior sin usar ni continue ni break. ¿Es más sencillo?
-c) Cambia el bucle while original para que se ejecute sin tener que asignar un valor inicial a la variable result.
 */
 let result = 1, arg1, arg2, res1, res2;
 while (result > 0) {
@@ -98,15 +97,25 @@ while (result > 0) {
     res1 = Math.sqrt(arg1);
     if (res1 < 0) {
         continue;
-    }                                                        /* continuar*/
+    }
     arg2 = Math.random();
     res2 = res1 / (arg1 + arg2);
-    result = res1 + res2;
     if (res2 < 0) {
         break;
     }
+    result = res1 + res2;
+
     console.log(result);
 }
+/*
+b) Prueba a realizar el apartado anterior sin usar ni continue ni break. ¿Es más sencillo?
+*/
+
+
+/*
+c) Cambia el bucle while original para que se ejecute sin tener que asignar un valor inicial a la variable result.
+*/
+
 /*
 5. La letra del NIF se calcula dividiendo la parte numérica (8 primeras cifras) por 23. 
 A partir del resto de esta división se asigna una letra según su posición en la siguiente 
@@ -115,13 +124,13 @@ Por ejemplo, el DNI 64253469 da como resto 2 al dividir por 23 (tercera posició
 empieza por 0), por lo que le corresponde la letra `W`.
 Implementar una función que calcule la letra a partir del número del NIF.
 */
-function letraDNI(numDNI) {
+function letraDNI(numDNI) { //el usuario introduce el DNI
     let letraDNI = "";
     let resto;
     let cadena = "TRWAGMYFPDXBNJZSQVHLCKE";
-    resto = parseInt(numDNI % 23);
+    resto = parseInt(numDNI % 23); // hacemos el modulo del número del dni 
     for (let i = 0; i < cadena.length; i++) {
-        letraDNI = cadena.charAt(resto);
+        letraDNI = cadena.charAt(resto); //y buscamos en número que ocuparía este (módulo) en la cadena (TRWAGMYFPDXBNJZSQVHLCKET)
     }
 
     return letraDNI;
@@ -176,6 +185,32 @@ cualquiera de euros dada. Recuerda que los billetes y monedas de uso legal dispo
 */
 function desgloseBilletes(cantidadDinero) {
 
+
+    var cash = Array(500, 200, 100, 50, 20, 10, 5, 2, 1);  // En este array están todos los billetes y monedas.
+
+    var cambio = Array(0, 0, 0, 0, 0, 0, 0, 0, 0);  // Y en este otro los billetes y monedas a devolver
+
+
+    for (var i = 0; i < cash.length; i++) { // Recorremos los billetes y monedas
+
+        if (cantidadDinero >= cash[i]) { // Si el importe actual, es superior a los billetes y monedas
+
+            cambio[i] = Math.floor(cantidadDinero / cash[i]);  // obtenemos cantidad de  billetes y monedas
+            cantidadDinero = (cantidadDinero - (cambio[i] * cash[i]));   // actualizamos el valor del importe que nos queda por didivir
+        }
+    }
+
+
+    for (i = 0; i < cash.length; i++){   // Bucle para mostrar el resultado
+    
+        if (cambio[i] > 0) {
+            if (cash[i] >= 5)
+                console.log("Hay: " + cambio[i] + " billetes de: " + cash[i] + " euro.");
+            else
+                console.log("Hay: " + cambio[i] + " monedas de: " + cash[i] + " euro.");
+        }
+    }
+
 }
 /*
 10. Muestra la fecha y hora actuales en formato: “DD/MM/YYYY hh:mm:ss TimeZone”.
@@ -218,10 +253,10 @@ function tiempoTranscurrido(fechaNacimiento, unidad) {
     var resultado;
     var fechaUsuario = new Date(fechaNacimiento);
     var fechaActual = new Date();
-    var diferenciaMs = fechaActual -fechaUsuario  ;
+    var diferenciaMs = fechaActual - fechaUsuario; // new Date nos da el tiempo en milisegundos , así que restamos la fecha actual entre la que nos da el usuario
 
-    switch (unidad) {
-        case "d": resultado = diferenciaMs / 86400000;
+    switch (unidad) { // y según la unidad , dividimos entre más o menos milisegundos.
+        case "d": resultado = diferenciaMs / 86400000; 
             break;
         case "h": resultado = diferenciaMs / 3600000;
             break;
@@ -230,7 +265,7 @@ function tiempoTranscurrido(fechaNacimiento, unidad) {
         case "s": resultado = diferenciaMs / 1000;
             break;
         default:
-                 console.log("Error , fecha mal introducida.");
+            console.log("Error , fecha mal introducida.");
             break;
     }
     return resultado;
@@ -242,10 +277,10 @@ también la función inversa hms2hdec(h,m,s).
 */
 function hdec2hms(x) {
 
-    var arrayHora = x.split(".");
-    var hora = arrayHora[0];
-    var minuto = parseInt(parseInt(arrayHora[1]) * 0.6);
-    var segundo = parseInt(((parseInt(arrayHora[1]) * 0.6) - (minuto)) * 100);
+    var arrayHora = x.split("."); //con el split separamos la hora que nos da el usuario  y lo guardamos en un array
+    var hora = arrayHora[0];  // la posición 0 , es la hora 
+    var minuto = parseInt(parseInt(arrayHora[1]) * 0.6); // a continuación hacemos la conversión a minutos 
+    var segundo = parseInt(((parseInt(arrayHora[1]) * 0.6) - (minuto)) * 100); // y después a segundos 
 
     var horaImprimible = hora + " : " + minuto + " : " + segundo;
 
@@ -253,10 +288,10 @@ function hdec2hms(x) {
 }
 
 function inversaHdec2hms(x) {
-    var arrayHora = x.split(":");
-    var hora = arrayHora[0];
-    var decimal = ((parseInt(arrayHora[1]) + (parseInt(arrayHora[2]) / 60)) / 60);
-    var decimalImprimir = String(decimal).match(/.[0-9][0-9]/);
+    var arrayHora = x.split(":");  //con el split separamos la hora , minutos y segundos.
+    var hora = arrayHora[0]; // la posición 0 , es la hora 
+    var decimal = ((parseInt(arrayHora[1]) + (parseInt(arrayHora[2]) / 60)) / 60); //pasamos los minutos y segundos a horas.
+    var decimalImprimir = String(decimal).match(/.[0-9][0-9]/); // y mostramos solo dos caracteres
     var horaImprimible = hora + decimalImprimir;
 
     return horaImprimible;
@@ -285,13 +320,13 @@ en javascript contiene milisegundos, por lo que hay que transformarlo en días. 
 */
 
 function fechaJuliana(fechaGregoriana) {
-    var fechaUsuario = new Date(fechaGregoriana);
-    var fechaUnix = new Date('1970-1-1');
-    var diasMs = 86400000;
-    var diferenciaMs = fechaUsuario - fechaUnix;
-    var diferenciaEnDias = diferenciaMs / diasMs;
+    var fechaUsuario = new Date(fechaGregoriana); //guardamos la fecha que  nos da el usuario 
+    var fechaUnix = new Date('1970-1-1'); // y ka correspondiente a la fecha UNIX
+    var diasMs = 86400000; 
+    var diferenciaMs = fechaUsuario - fechaUnix; //restamos ambas fechas 
+    var diferenciaEnDias = diferenciaMs / diasMs; // y dividimos los milisegundos en la equivalencia a un día
 
-    fechaJuliana = diferenciaEnDias + 2440587.5;
+    fechaJuliana = diferenciaEnDias + 2440587.5; // finalmente le sumamos  2440587.5 para saber la fecha juliana
     return fechaJuliana;
 }
 
@@ -332,12 +367,12 @@ Utilizar esta relación para implementar una función sinDegAlt(x) que obtenga e
 usando para ello la función cosDeg(x) anteriormente implementada.
 */
 function sinDegAlt(x) {
-    return Math.sqrt(1 - Math.pow(cosDeg(x), 2));
+    return Math.sqrt(1 - Math.pow(cosDeg(x), 2)); // despejamos el seno √ (1- cos(x)^2)
 }
 /*
 Implementar también la función inversa al apartado anterior: cosDegAlt(x) usando para ello sinDeg(x)
 */
 
 function cosDegAlt(x) {
-    return
+    return Math.sqrt(1 - Math.pow(sinDeg(x), 2));
 }

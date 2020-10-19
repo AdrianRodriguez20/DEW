@@ -1,7 +1,29 @@
 /*
 1-    Realiza 3 ejercicios anteriores utilizando operador ternario.
 */
+var palabraGanadora = "PARIS"; //establecemos la capital
+var palabraUsuario = "";
+var intentos = 3; 
 
+do {
+    intentos--; //contador para cada vez que falle , se decrementen los intentos
+    palabraUsuario = prompt("Introduce la capital de Francia: ");
+    palabraUsuario.toUpperCase() == palabraGanadora ? console.log("Correcto " )  : console.log("Incorrecto");
+    palabraUsuario.toUpperCase() == palabraGanadora ? intentos=0  : console.log("Intentos restantes: " + intentos );
+} while (intentos > 0);
+//------------------------------------------------------------------------------------------------------------------------------//
+function busquedaPalabra(texto) {
+
+    var resultado;
+    var patt = new RegExp(/\barriba\b/);
+    var palabraEnTexto = patt.test(texto);
+    var textoModificado = texto.replace(/\barriba\b/, 'abajo')
+    palabraEnTexto == true? resultado = "Se encuentra la palabra en el texto -> " + textoModificado: resultado = "La palabra no se encuentra en el texto";
+    return resultado;
+  }
+  //------------------------------------------------------------------------------------------------------------------------------//
+
+  
 /*
 2-    Realiza una función sumatoria utilizando “arguments”. Utiliza un bucle for. El usuario debe introducir 7 números. Resultado muéstralo en consola.
 */
@@ -21,10 +43,10 @@ function media (){
     var media=0;
     var suma=0;
     for (let i = 0; i < arguments.length; i++) {
-      suma+=arguments[i] ;
+      suma+=arguments[i] ; //sumamos todos los argumentos
         
     }
-    media = suma/arguments.length;
+    media = suma/arguments.length; // y para calcular la media lo dividimos entre la cantidad de los argumentoss
     
     return media;
 }

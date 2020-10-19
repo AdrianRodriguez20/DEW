@@ -19,7 +19,7 @@ function numCaracteres(texto = isRequired(), caracter = isRequired()) {
 }
 
 /*
-Escribir una función que acepte al menos un argumento (el primer argumento debe ser obligatorio, 
+2.Escribir una función que acepte al menos un argumento (el primer argumento debe ser obligatorio, 
 mostrar un mensaje de error si no se indica, luego se pueden indicar tantos argumentos como desee 
 el usuario) y que devuelva la suma y la media de todos los elementos. Comprobar que todos los argumentos
 sean números e ignorar los que no lo sean, mostrando un aviso (por ejemplo: ¡AVISO! El argumento número 
@@ -36,7 +36,7 @@ function sumaYmedia() {
 
   if (arguments.length == 0) { //Primero verificamos si hay al menos un argumento 
     resultado = "Debes introducir un argumento como mínimo";
-  } else { 
+  } else {
 
     for (let i = 0; i < arguments.length; i++) {
       if (typeof (arguments[i]) == 'string') { //comprobamos si los argumentos dados por el usuario son palabras
@@ -48,9 +48,9 @@ function sumaYmedia() {
 
     }
 
-    for (let i = 0; i < arrayNum.length; i++) { 
+    for (let i = 0; i < arrayNum.length; i++) {
       if (typeof (arrayNum[i]) !== 'undefined') { // a continuación si la casilla del array no está vacia procedemos a la suma 
-        suma += arrayNum[i]; 
+        suma += arrayNum[i];
         iteraciones++ //añadimos un contador para saber el número de argumentos que estamos sumando, ya que el length no nos sirvirá porque también contará las casillas vacias 
         // y para la media supondrá un problema. 
       }
@@ -64,47 +64,59 @@ function sumaYmedia() {
   return resultado;
 }
 /*
-Realizar una función en JS que dado un DNI (comprobar que es un número entre 0 y 99999999), 
+3.Realizar una función en JS que dado un DNI (comprobar que es un número entre 0 y 99999999), 
 devuelva la letra asociado al mismo. Esta letra se calcula como el módulo (resto) de la división
 del número del DNI entre 23, y a partir del resto se escoge una de las siguientes letras según 
 la posición: TRWAGMYFPDXBNJZSQVHLCKET. Por ejemplo, para el DNI 12345678, al dividir entre 23 se
 obtiene como resto 14, por lo que le corresponde la letra 'Z', siendo el DNI correcto 12345678Z.
   */
+function validarNumDNI(numDNI) { // creamos una funcion para validar que el dni tiene entre 0 y 99999999
+  var patt = new RegExp(/^[0-9]{1,8}$/);
+  var validar = patt.test(numDNI);
+  return validar;
+}
+
 function letraDNI(numDNI) {
-  //comprobar que es un número entre 0 y 99999999
-  let letraDNI = "";
+  let resultado = "";
   let resto;
   let cadena = "TRWAGMYFPDXBNJZSQVHLCKE";
-  resto = parseInt(numDNI % 23);
-  for (let i = 0; i < cadena.length; i++) {
-    letraDNI = cadena.charAt(resto);
+
+  if (validarNumDNI(numDNI) == true) { //si pasa la validación procedemos a calcular el número
+
+    resto = parseInt(numDNI % 23); // hacemos el modulo del número del dni 
+    for (let i = 0; i < cadena.length; i++) {
+      resultado = cadena.charAt(resto); //y buscamos en número que ocuparía este (módulo) en la cadena (TRWAGMYFPDXBNJZSQVHLCKET)
+    }
+  } else {
+    resultado = "El número introducido no cúmple con los parámetros establecidos";
   }
 
-  return letraDNI;
+
+  return resultado;
 }
 
 /*
-Crear una función que genere un array aleatorio, usando 3 parámetros: número de elementos 
+4.Crear una función que genere un array aleatorio, usando 3 parámetros: número de elementos 
 (por defecto 10, valor mínimo del elemento (por defecto 100), valor máximo (por defecto 200).
 */
 
-function arrayAleatorio(numElementos = 10, valorMin = 100, valorMax = 200) { 
-  var arrayAleatorio = new Array(numElementos);
+function arrayAleatorio(numElementos = 10, valorMin = 100, valorMax = 200) { //establecemos los parámetros predefinidos 
+  var arrayAleatorio = new Array(numElementos); // creamos el array 
   for (let i = 0; i < arrayAleatorio.length; i++) {
-    arrayAleatorio[i] = Math.floor(Math.random() * (valorMax - valorMin + 1)) + (valorMin);
-    console.log(arrayAleatorio[i]);
-
+    arrayAleatorio[i] = Math.floor(Math.random() * (valorMax - valorMin + 1)) + (valorMin); // introducimos los valores aleatorios , 
+    console.log(arrayAleatorio[i]);                                                         // para ello utilizamos el Math.random y para reflejarlo como un entero utilizamos el Math.floor
+                                                                                            // y establecemos los límites.
   }
 }
 
 /*
-Usando la función del ejercicio 1, generar un array aleatorio de 20 elementos entre 20 y 100 y luego ordenarlo.
+5.Usando la función del ejercicio 1, generar un array aleatorio de 20 elementos entre 20 y 100 y luego ordenarlo.
 */
 function arrayAleatorio(numElementos = 20, valorMin = 20, valorMax = 100) {
   var temp;
 
   var arrayAleatorio = new Array(numElementos);
-  for (let i = 0; i < arrayAleatorio.length; i++) {
+  for (let i = 0; i < arrayAleatorio.length; i++) { //utilizamos el random del ejercicio anterior
     arrayAleatorio[i] = Math.floor(Math.random() * (valorMax - valorMin + 1)) + (valorMin);
 
   }
@@ -124,19 +136,31 @@ function arrayAleatorio(numElementos = 20, valorMin = 20, valorMax = 100) {
   }
 
   for (let i = 0; i < arrayAleatorio.length; i++) {
-    console.log(arrayAleatorio[i]);
+    console.log(arrayAleatorio[i]); //mostramos el array
 
   }
 }
 
 /*
-Crear una función que mezcle los elementos de un array en orden aleatorio. Probar con el array ordenado creado en el ejercicio anterior
+6.Crear una función que mezcle los elementos de un array en orden aleatorio. Probar con el array ordenado creado en el ejercicio anterior
 */
-function desordenarArray(array){
+function desordenarArray(arrayOrdenado) {
+  var temp;
+  var posRandom;
+  for (let i = 0; i < arrayOrdenado.length - 1; i++) {
+    posRandom = Math.floor(Math.random() * arrayOrdenado.length); // con el random y sabiendo la logitud del array creamos posiciónes alatorias
+    temp = arrayOrdenado[i]; // para los numeros y los intercambiamos 
+    arrayOrdenado[i] = arrayOrdenado[posRandom];
+    arrayOrdenado[posRandom] = temp;
+  }
 
+  for (let i = 0; i < arrayOrdenado.length; i++) { // mostramos el array
+    console.log(arrayOrdenado[i]);
+
+  }
 }
 /* 
-Recorrer un array aleatorio generado con la función del ejercicio 1 (15 elementos entre -10 y 20) y para cada elemento x, gestionar un nuevo array de la siguiente forma:
+7.Recorrer un array aleatorio generado con la función del ejercicio 1 (15 elementos entre -10 y 20) y para cada elemento x, gestionar un nuevo array de la siguiente forma:
 x <= -5: Eliminar el primer elemento del array
 -5 < x <= 0: Eliminar el último elemento del array
 0 < x <=  10: Añadir x al principio del array
@@ -146,111 +170,130 @@ y el tamaño del array tras realizar la operación
 */
 
 /*
-Crear una función que acepte un array y devuelva otro array con la raíz cuadrada de cada elemento. Probar con un array aleatorio de 20 números entre 60 y 100.
+8.Crear una función que acepte un array y devuelva otro array con la raíz cuadrada de cada elemento. Probar con un array aleatorio de 20 números entre 60 y 100.
 */
-function raizCuadradaArray(numElementos = 20, valorMin = 60, valorMax = 100) {
+function raizCuadradaArray(numElementos = 20, valorMin = 60, valorMax = 100) { //creamos un array aleatorio con los parámetros establecidos 
   var arrayAleatorio = new Array(numElementos);
   for (let i = 0; i < arrayAleatorio.length; i++) {
     arrayAleatorio[i] = Math.floor(Math.random() * (valorMax - valorMin + 1)) + (valorMin);
 
   }
-  var arrayRaiz = new Array(numElementos);
+  var arrayRaiz = new Array(numElementos); // creamos un nuevo array 
   for (let i = 0; i < arrayRaiz.length; i++) {
-    arrayRaiz[i] = Math.sqrt(arrayAleatorio[i]);
-    console.log(arrayRaiz[i]);
+    arrayRaiz[i] = Math.sqrt(arrayAleatorio[i]); //y copiamos las raices cuadradas en el nuevo array
+    console.log(arrayRaiz[i]); //lo mostramos para comprobar
 
   }
 }
 /* 
-Crear una función que devuelva el valor máximo y mínimo del array, e indique el índice de estos valores (si el valor se repite, informar sólo sobre la primera vez que aparezca).
+9.Crear una función que devuelva el valor máximo y mínimo del array, e indique el índice de estos valores (si el valor se repite, informar sólo sobre la primera vez que aparezca).
  Probar con un array aleatorio de 20 números entre -100 y 100.
 */
 function valorMaxyMin(numElementos = 20, valorMin = -100, valorMax = 100) {
   var tempA = 0;
   var tempB = 0;
   var arrayAleatorio = new Array(numElementos);
-  for (let i = 0; i < arrayAleatorio.length; i++) {
+  var posMin;
+  var posMax;
+  for (let i = 0; i < arrayAleatorio.length; i++) { //creamos el array aleatorio
     arrayAleatorio[i] = Math.floor(Math.random() * (valorMax - valorMin + 1)) + (valorMin);
     console.log(arrayAleatorio[i]);
   }
 
   for (let i = 0; i < arrayAleatorio.length - 1; i++) {
-    for (let j = i + 1; j < arrayAleatorio.length; j++) {
-      if (arrayAleatorio[i] > arrayAleatorio[j]) {
-        if (tempA < arrayAleatorio[i])
-          tempA = arrayAleatorio[i];
 
-      }
+    if (arrayAleatorio[i] > tempA) { // Buscamos el valor máximo y el posición del mismo
+      tempA = arrayAleatorio[i];
+      posMax = i;
     }
+
   }
 
-  for (let i = 0; i < arrayAleatorio.length - 1; i++) {
-    for (let j = i + 1; j < arrayAleatorio.length; j++) {        //buscar indices
-      if (arrayAleatorio[i] < arrayAleatorio[j]) {
-        if (tempB > arrayAleatorio[i])
-          tempB = arrayAleatorio[i];
-
-      }
+  for (let i = 0; i < arrayAleatorio.length - 1; i++) { // Buscamos el valor mínimo y el posición del mismo
+    
+    if (arrayAleatorio[i] < tempB) {
+      tempB = arrayAleatorio[i];
+      posMin = i;
     }
+
   }
 
 
-
-  var valorMin = "Valor Min:  " + tempB
-  var valorMax = "Valor Máximo:  " + tempA;
+  var valorMin = "Valor Min:  " + tempB + " Con la posición " + posMin
+  var valorMax = "Valor Máximo:  " + tempA + " Con la posición " + posMax;
 
   return valorMin + ", " + valorMax;
 }
 /*
-Crear un array de 50 números aleatorios enteros aleatorios entre 10 y 20. Para cada elemento, informar si es la primera vez que aparece, o si se trata de un elemento repetido.
+10.Crear un array de 50 números aleatorios enteros aleatorios entre 10 y 20. Para cada elemento, informar si es la primera vez que aparece, o si se trata de un elemento repetido.
 */
 
-function buscar(arrayAleatorio) {
-  var veces = 0;
-  for (let j = 0; j < arrayAleatorio.length; j++) {
-    if (arrayAleatorio[j] == 12) {
-      veces++
-      do {
-        console.log("Es la primera vez que aparece");
-      } while (veces < 1);
-
-    }
-  }
-}
-
 function busquedaArray(numElementos = 50, valorMin = 10, valorMax = 20) {
-  var arrayAleatorio = new Array(numElementos);
+  var arrayAleatorio = new Array(numElementos); //se crea el array 
+ 
+  var arrayNum = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,); // array de  comprobación repetidos
   for (let i = 0; i < arrayAleatorio.length; i++) {
-    arrayAleatorio[i] = Math.floor(Math.random() * (valorMax - valorMin + 1)) + (valorMin);
-    console.log(arrayAleatorio[i]);
-    buscar(arrayAleatorio);
+      arrayAleatorio[i] = Math.floor(Math.random() * (valorMax - valorMin + 1)) + (valorMin);
+      console.log(arrayAleatorio[i]);
+
+    for (let j = 10; j < arrayNum.length; j++) {
+
+      if (arrayAleatorio[i]==j) {  // si el número random coincide con la posición del nuevo array 
+          if (arrayNum[j] == 0){  // entramos al if , si arrayNum[j] es igual a O , es la primera vez que aparece.
+              arrayNum[j]=1; // y cambiamos a 1;
+              console.log("Es la primera vez que aparece");  
+          }else {
+              console.log("Numero repetido")
+          }
+        
+      }  
   }
-
-
-
 }
 
-//continuar
-
+}
 
 
 /* 
-Modificar el ejercicio anterior para que si el número ya existía, nos indique cuántas veces había aparecido con anterioridad.
+11.Modificar el ejercicio anterior para que si el número ya existía, nos indique cuántas veces había aparecido con anterioridad.
 */
+function busquedaArray(numElementos = 50, valorMin = 10, valorMax = 20) {
+  var arrayAleatorio = new Array(numElementos); //se crea el array 
+ 
+  var arrayNum = new Array(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,); // array de  comprobación repetidos
+  for (let i = 0; i < arrayAleatorio.length; i++) {
+      arrayAleatorio[i] = Math.floor(Math.random() * (valorMax - valorMin + 1)) + (valorMin);
+      console.log(arrayAleatorio[i]);
+
+    for (let j = 10; j < arrayNum.length; j++) {
+
+      if (arrayAleatorio[i]==j) {   // si el número random coincide con la posición del nuevo array 
+          if (arrayNum[j] == 0){ // entramos al if , si arrayNum[j] es igual a O , es la primera vez que aparece.
+              arrayNum[j]=1; // y cambiamos a 1;
+              console.log("Es la primera vez que aparece");  
+          }else { 
+          
+              console.log("Numero repetido: "+ ++arrayNum[j]) //incrementamos arrayNum[j]
+          }
+        
+      }  
+  }
+}
+
+}
 
 /*
-Escribir una función que busque la cadena "arriba" en un texto. La función deberá informar si encuentra o no esta cadena en el texto y, si la encuentra, nos deberá mostrar el texto reemplazando "arriba" por "abajo".
+12.Escribir una función que busque la cadena "arriba" en un texto. La función deberá informar si encuentra o no esta cadena en el texto y, si la encuentra, nos deberá mostrar el texto reemplazando "arriba" por "abajo".
 */
 function busquedaPalabra(texto) {
 
   var resultado;
-  var patt = new RegExp(/\barriba\b/);
-  var palabraEnTexto = patt.test(texto);
+  var patt = new RegExp(/\barriba\b/); // creamos un pattern 
+  var palabraEnTexto = patt.test(texto); // .test() nos devuelve si está en el texto 
   var textoModificado = texto.replace(/\barriba\b/, 'abajo')
   if (palabraEnTexto == true) {
-    resultado = "Se encuentra la palabra en el texto -> " + textoModificado;
+    resultado = "Se encuentra la palabra en el texto -> " + textoModificado; // si está lo modifica cambiando por abajo
   } else {
-    resultado = "La palabra no se encuentra en el texto";
+    resultado = "La palabra no se encuentra en el texto"; // si no nos notifica que no hay nada
   }
   return resultado;
 }
