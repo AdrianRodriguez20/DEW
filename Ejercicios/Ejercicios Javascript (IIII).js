@@ -3,13 +3,13 @@
 */
 var palabraGanadora = "PARIS"; //establecemos la capital
 var palabraUsuario = "";
-var intentos = 3; 
+var intentos = 3;
 
 do {
     intentos--; //contador para cada vez que falle , se decrementen los intentos
     palabraUsuario = prompt("Introduce la capital de Francia: ");
-    palabraUsuario.toUpperCase() == palabraGanadora ? console.log("Correcto " )  : console.log("Incorrecto");
-    palabraUsuario.toUpperCase() == palabraGanadora ? intentos=0  : console.log("Intentos restantes: " + intentos );
+    palabraUsuario.toUpperCase() == palabraGanadora ? console.log("Correcto ") : console.log("Incorrecto");
+    palabraUsuario.toUpperCase() == palabraGanadora ? intentos = 0 : console.log("Intentos restantes: " + intentos);
 } while (intentos > 0);
 //------------------------------------------------------------------------------------------------------------------------------//
 function busquedaPalabra(texto) {
@@ -18,20 +18,20 @@ function busquedaPalabra(texto) {
     var patt = new RegExp(/\barriba\b/);
     var palabraEnTexto = patt.test(texto);
     var textoModificado = texto.replace(/\barriba\b/, 'abajo')
-    palabraEnTexto == true? resultado = "Se encuentra la palabra en el texto -> " + textoModificado: resultado = "La palabra no se encuentra en el texto";
+    palabraEnTexto == true ? resultado = "Se encuentra la palabra en el texto -> " + textoModificado : resultado = "La palabra no se encuentra en el texto";
     return resultado;
-  }
-  //------------------------------------------------------------------------------------------------------------------------------//
+}
+//------------------------------------------------------------------------------------------------------------------------------//
 
-  
+
 /*
 2-    Realiza una función sumatoria utilizando “arguments”. Utiliza un bucle for. El usuario debe introducir 7 números. Resultado muéstralo en consola.
 */
-function sumatorio (){
-    var resultado=0;
+function sumatorio() {
+    var resultado = 0;
     for (let i = 0; i < arguments.length; i++) {
-      resultado+=arguments[i];
-        
+        resultado += arguments[i];
+
     }
     return resultado;
 }
@@ -39,15 +39,15 @@ function sumatorio (){
 /*
 3-    Realiza una función que calcule la media de 5 notas introducidas por el usuario. Utiliza “arguments”. Muestra el resultado por consola.
 */
-function media (){
-    var media=0;
-    var suma=0;
+function media() {
+    var media = 0;
+    var suma = 0;
     for (let i = 0; i < arguments.length; i++) {
-      suma+=arguments[i] ; //sumamos todos los argumentos
-        
+        suma += arguments[i]; //sumamos todos los argumentos
+
     }
-    media = suma/arguments.length; // y para calcular la media lo dividimos entre la cantidad de los argumentoss
-    
+    media = suma / arguments.length; // y para calcular la media lo dividimos entre la cantidad de los argumentoss
+
     return media;
 }
 /*
@@ -81,8 +81,8 @@ function validarCorreo(correo) {
 */
 
 function validarFecha(fecha) {
-var patt = new RegExp(/\d{1,2}\/\d{1,2}\/\d{4}/);
-var validar = patt.test(fecha);
+    var patt = new RegExp(/\d{1,2}\/\d{1,2}\/\d{4}/);
+    var validar = patt.test(fecha);
     return validar;
 }
 
@@ -96,4 +96,56 @@ var validar = patt.test(fecha);
 
 /*
 10-  Analiza los diferentes métodos de arrays y crea 3 ejercicios aplicados donde el usuario deba intervenir.
+*/
+/*
+11-   Realiza un programa para probar si el primer carácter de una cadena introducida por el usuario está en mayúsculas o no.
+*/
+function isUpperCase(texto) {
+    var patt = new RegExp(/^[A-Z]/);
+    var validar = patt.test(texto);
+    return validar;
+}
+/*
+12-   Realiza un script para buscar una fecha dentro de una cadena introducida por el usuario.
+*/
+
+function isUpperCase(texto) {
+    var patt = new RegExp(/([0][1-9]|[12][0-9]|3[01])\/([0][1-9]|[1][0-2])\/(\d{4})/);
+    var coincidencia = texto.match(patt);
+    return coincidencia[0];
+}
+
+/*
+13-   Escriba un programa para contar el número de palabras en una cadena.
+Nota :
+- Elimine los espacios en blanco de la posición inicial y final.
+- Convierta 2 o más espacios en 1.
+- Excluya la nueva línea con un espaciado inicial.
+*/
+function contarpalabras(texto) {
+    var arrayTexto = texto.split('');
+    var numCaracteres=arrayTexto.length;
+
+    if (arrayTexto[0] == " ") {
+       numCaracteres--
+    }
+    if (arrayTexto[arrayTexto.length - 1] == " ") {
+        numCaracteres--
+     }
+    for (let i = 0; i < arrayTexto.length; i++) {
+        if ((arrayTexto[i] == " " ) && ( [arrayTexto[i + 1]] == " ")) {
+            numCaracteres--
+        }
+    }
+
+    return numCaracteres;
+
+}
+
+
+
+
+/*
+14- Escriba una función para verificar si un valor dado por el usuario es un valor de IP o no.
+El usuario puede incluir IP v4 o IP v6. Debe mostrase un resultado e indicar si es IP v4 o IP v6
 */
