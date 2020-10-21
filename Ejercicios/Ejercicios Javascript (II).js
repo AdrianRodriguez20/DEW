@@ -161,7 +161,6 @@ function letraDNI(numDNI) { //el usuario introduce el DNI
 function conversorTemperatura(gradosFarenheit) {
     let resultadoCelsius;
     resultadoCelsius = (parseFloat(gradosFarenheit) - 32) * (5 / 9);
-    resultadoCelsius = parseFloat(gradosFarenheit) - 32
     return resultadoCelsius;
 }
 
@@ -174,7 +173,6 @@ function conversorTemperatura(gradosFarenheit, simbolo) {
     let resultadoCelsius;
     var simbolo;
     resultadoCelsius = (parseFloat(gradosFarenheit) - 32) * (5 / 9);
-    resultadoCelsius = parseFloat(gradosFarenheit) - 32
     if (simbolo == true) {
         resultadoCelsius = resultadoCelsius + "ºC";
     }
@@ -184,13 +182,13 @@ function conversorTemperatura(gradosFarenheit, simbolo) {
 8.Genera una lista que contenga el cuadrado de los números pares y el cubo de los impares entre 1 y 100 (inclusive).
 */
 for (let i = 1; i < 101; i++) {
-    if (i % 2 == 0) {
+    if (i % 2 == 0) { //utilizamos el módulo de i
         console.log(i * i);
     }
 
 }
 for (let i = 1; i < 101; i++) {
-    if (i % 2 !== 0) {
+    if (i % 2 !== 0) { 
         console.log(i * i);
     }
 
