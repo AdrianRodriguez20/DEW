@@ -99,10 +99,11 @@ while (result > 0) {
         continue;
     }
     arg2 = Math.random();
-    res2 = res1 / (arg1 + arg2);
-    if (res2 < 0) {
+    if (res2 == 0) {
         break;
     }
+    res2 = res1 / (arg1 + arg2);
+   
     result = res1 + res2;
 
     console.log(result);
@@ -115,7 +116,24 @@ b) Prueba a realizar el apartado anterior sin usar ni continue ni break. ¿Es m�
 /*
 c) Cambia el bucle while original para que se ejecute sin tener que asignar un valor inicial a la variable result.
 */
+let result, arg1, arg2, res1, res2;
+do{
+    arg1 = Math.random() - 0.5;
 
+    res1 = Math.sqrt(arg1);
+    if (res1 < 0) {
+        continue;
+    }
+    arg2 = Math.random();
+    if (res2 == 0) {
+        break;
+    }
+    res2 = res1 / (arg1 + arg2);
+   
+    result = res1 + res2;
+
+    console.log(result);
+}while(result > 0) ;
 /*
 5. La letra del NIF se calcula dividiendo la parte numérica (8 primeras cifras) por 23. 
 A partir del resto de esta división se asigna una letra según su posición en la siguiente 
