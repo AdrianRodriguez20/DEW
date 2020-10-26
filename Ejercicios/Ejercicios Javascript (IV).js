@@ -168,7 +168,14 @@ function loteria(num) { //En la función lotería introducimos un número y nos 
 
 //------------------------------------------------------------------------------------------------------------------------------//
 
-
+function OrdenarArray(){ //En esta función se escriben tantos valores como quiera el usuario 
+    var ArrayDesordenado = new Array(arguments.length); // se crea un array con la dimensión del numero de elementos introducidos 
+    for (let i = 0; i < arguments.length; i++) { //se copia el array 
+        ArrayDesordenado[i]=arguments[i];
+        
+    }
+   return  ArrayDesordenado.sort(); //devolvemos el array ordenado con el metodo .sort()
+}
 /*
 11-   Realiza un programa para probar si el primer carácter de una cadena introducida por el usuario está en mayúsculas o no.
 */
