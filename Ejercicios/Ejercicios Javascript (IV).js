@@ -16,14 +16,32 @@ function busquedaPalabra(texto) {
 
     var resultado;
     var patt = new RegExp(/\barriba\b/);  //creamos un patrón para buscar la palabra arriba
-    var palabraEnTexto = patt.test(texto); 
+    var palabraEnTexto = patt.test(texto);
     var textoModificado = texto.replace(/\barriba\b/, 'abajo') //si esta cambia la arriba por abajo
-    palabraEnTexto == true ? resultado = "Se encuentra la palabra en el texto -> " + textoModificado : resultado = "La palabra no se encuentra en el texto"; 
+    palabraEnTexto == true ? resultado = "Se encuentra la palabra en el texto -> " + textoModificado : resultado = "La palabra no se encuentra en el texto";
     return resultado;
 }
 //------------------------------------------------------------------------------------------------------------------------------//
 
+function letraDNI(numDNI) { //el usuario introduce el DNI como una string
+    let calcularLetra;
+    let letraDNI = "";
+    let resto;
+    let cadena = "TRWAGMYFPDXBNJZSQVHLCKE";
+    numDNI.length == 8 ? calcularLetra = true : calcularLetra = false; //si la longitud de la string es igual a 8 entra en el if
+    if (calcularLetra == true) {
 
+        resto = parseInt(numDNI % 23); // hacemos el modulo del número del dni 
+        for (let i = 0; i < cadena.length; i++) {
+            letraDNI = cadena.charAt(resto); //y buscamos en número que ocuparía este (módulo) en la cadena (TRWAGMYFPDXBNJZSQVHLCKET)
+        }
+    }else{
+        letraDNI="El DNI introducido no cumple con los parametros";
+    }
+
+
+    return letraDNI;
+}
 /*
 2-    Realiza una función sumatoria utilizando “arguments”. Utiliza un bucle for. El usuario debe introducir 7 números. Resultado muéstralo en consola.
 */
@@ -88,7 +106,7 @@ function validarFecha(fecha) {
 /*
 8-    Realiza 3 ejercicios anteriores utilizando funciones anónimas.
 */
-var sumatorio=function () { //funcion que calcula la suma de los valores introducidos por el usuario.
+var sumatorio = function () { //funcion que calcula la suma de los valores introducidos por el usuario.
     var resultado = 0;
     for (let i = 0; i < arguments.length; i++) { //como no definimos el numero de parámetros , utilizamos arguments
         resultado += arguments[i]; //sumamos cada valor y lo introducimos dentro del resultado en cada iteración
@@ -97,7 +115,7 @@ var sumatorio=function () { //funcion que calcula la suma de los valores introdu
     return resultado;
 }
 //------------------------------------------------------------------------------------------------------------------------------//
-var media =function (){
+var media = function () {
     var media = 0;
     var suma = 0;
     for (let i = 0; i < arguments.length; i++) {
@@ -110,7 +128,7 @@ var media =function (){
 }
 
 //------------------------------------------------------------------------------------------------------------------------------//
-var validarMatricula= function (matricula) { 
+var validarMatricula = function (matricula) {
     var patt = new RegExp(/[0-9]{4}[-][A-Z]{3}/); //creamos un patrón (0000-XXX) para las matriculas con expresiones regulares
     var validar = patt.test(matricula); //buscamos en la matricula introducida por el usuario ese patron
     return validar; //si está devuelve true y si no false;
@@ -118,36 +136,36 @@ var validarMatricula= function (matricula) {
 /*
 9-    Analiza los diferentes métodos de string y crea 3 ejercicios aplicados donde el usuario deba intervenir.
 */
-function refactorName (text,oldWord, newWord){ //el usuario introduce el texto que desea modificar así como la palabra que quiere sustituir y la nueva palabra
-var text;
-var textRefactored = text.replace(oldWord, newWord); //utilizamos el metodo replace para intercambiar las palabras.
-return textRefactored ;
+function refactorName(text, oldWord, newWord) { //el usuario introduce el texto que desea modificar así como la palabra que quiere sustituir y la nueva palabra
+    var text;
+    var textRefactored = text.replace(oldWord, newWord); //utilizamos el metodo replace para intercambiar las palabras.
+    return textRefactored;
 }
 
 //------------------------------------------------------------------------------------------------------------------------------//
-var text=prompt("Introduce el texto a separar") 
+var text = prompt("Introduce el texto a separar")
 separarPalabras(text);
-function separarPalabras (text){ //funcion que separa el texto en que introduce el usuario y lo convierte a un array con cada una de las palabras
-    var array =text.split(" "); //para separar las palabras utilizamos el split , en este caso por espacios .
+function separarPalabras(text) { //funcion que separa el texto en que introduce el usuario y lo convierte a un array con cada una de las palabras
+    var array = text.split(" "); //para separar las palabras utilizamos el split , en este caso por espacios .
     return array; //devolvemos el array.
-} 
+}
 //------------------------------------------------------------------------------------------------------------------------------//
 
-function inicialEnMayuscula (texto){ //funcion que cambia la primera letra de la palabra que introduce el usuario por mayuscula
-    var letraMayuscula= texto.charAt(0).toUpperCase()  // utilizamos el metodo charAt para coger la primera letra
-    var palabraMayuscula="";
+function inicialEnMayuscula(texto) { //funcion que cambia la primera letra de la palabra que introduce el usuario por mayuscula
+    var letraMayuscula = texto.charAt(0).toUpperCase()  // utilizamos el metodo charAt para coger la primera letra
+    var palabraMayuscula = "";
     for (let i = 1; i < texto.length; i++) {
-        palabraMayuscula+=texto.charAt(i)  //separamos el resto de la palabra , por eso empezamos el bucle en i=1;
-        
+        palabraMayuscula += texto.charAt(i)  //separamos el resto de la palabra , por eso empezamos el bucle en i=1;
+
     }
-   return letraMayuscula+palabraMayuscula; //finalmente delvolvemos la palabra con la primera letra mayúscula 
+    return letraMayuscula + palabraMayuscula; //finalmente delvolvemos la palabra con la primera letra mayúscula 
 }
 /*
 10-  Analiza los diferentes métodos de arrays y crea 3 ejercicios aplicados donde el usuario deba intervenir.
 */
 
-function buscarNumMayor (numMayor){ //funcion para buscar el primer número mayor del array al que has introducido 
-    var array1 = [5, 12, 8, 130, 44 ,200 ,32 ,243]
+function buscarNumMayor(numMayor) { //funcion para buscar el primer número mayor del array al que has introducido 
+    var array1 = [5, 12, 8, 130, 44, 200, 32, 243]
 
     const found = array1.find(element => element > numMayor); //utilizamos el metodo find para buscar la primera coincidencia , en este caso mayor que el número que hemos introducido
     return found;
@@ -157,24 +175,24 @@ function buscarNumMayor (numMayor){ //funcion para buscar el primer número mayo
 
 function loteria(num) { //En la función lotería introducimos un número y nos dice si este esta premiado o no
     var resultado;
-    var array1 = [5, 12, 8, 130, 44 ,200 ,32 ,243]
-    if(array1.indexOf(num)==-1){ //si el método indexOf nos devuelve -1 significa que no está en el array 
-        resultado="No premiado";
-    }else{ //por el contrario si se encuentra nos devolverá la posición del mismo . 
-        resultado="Premiado"; //Por lo que estaría premiado
+    var array1 = [5, 12, 8, 130, 44, 200, 32, 243]
+    if (array1.indexOf(num) == -1) { //si el método indexOf nos devuelve -1 significa que no está en el array 
+        resultado = "No premiado";
+    } else { //por el contrario si se encuentra nos devolverá la posición del mismo . 
+        resultado = "Premiado"; //Por lo que estaría premiado
     }
     return resultado;
 }
 
 //------------------------------------------------------------------------------------------------------------------------------//
 
-function OrdenarArray(){ //En esta función se escriben tantos valores como quiera el usuario 
+function OrdenarArray() { //En esta función se escriben tantos valores como quiera el usuario 
     var ArrayDesordenado = new Array(arguments.length); // se crea un array con la dimensión del numero de elementos introducidos 
     for (let i = 0; i < arguments.length; i++) { //se copia el array 
-        ArrayDesordenado[i]=arguments[i];
-        
+        ArrayDesordenado[i] = arguments[i];
+
     }
-   return  ArrayDesordenado.sort(); //devolvemos el array ordenado con el metodo .sort()
+    return ArrayDesordenado.sort(); //devolvemos el array ordenado con el metodo .sort()
 }
 /*
 11-   Realiza un programa para probar si el primer carácter de una cadena introducida por el usuario está en mayúsculas o no.
@@ -203,16 +221,16 @@ Nota :
 */
 function contarpalabras(texto) {
     var arrayTexto = texto.split('');
-    var numCaracteres=arrayTexto.length;
+    var numCaracteres = arrayTexto.length;
 
     if (arrayTexto[0] == " ") {
-       numCaracteres--
+        numCaracteres--
     }
     if (arrayTexto[arrayTexto.length - 1] == " ") {
         numCaracteres--
-     }
+    }
     for (let i = 0; i < arrayTexto.length; i++) {
-        if ((arrayTexto[i] == " " ) && ( [arrayTexto[i + 1]] == " ")) {
+        if ((arrayTexto[i] == " ") && ([arrayTexto[i + 1]] == " ")) {
             numCaracteres--
         }
     }
