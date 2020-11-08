@@ -18,16 +18,16 @@ y le devuelva en una nueva ventana el nombre y versión del navegador, el idioma
     <input type="button" value="info" onclick="info()">
 
     <script>
-        var ventana;
-        var navegador;
-        var version
-        var versionYNav;
-        var versionYNavStr;
-        if (navigator.userAgent.indexOf('Chrome') > -1) {
+        var ventana; //variable de la nueva ventana
+        var navegador; //variable para el nombre del navegador
+        var version // variable para la versión del navegador
+        var versionYNav; //Object de la coincidencia 
+        var versionYNavStr; // Array de String con cla version 
+        if (navigator.userAgent.indexOf('Chrome') > -1) { //la forma de saber que navegador es es buscando el índice de los navegadores si positivo es que es el navegador
             navegador = "Chrome";
-            versionYNav=navigator.userAgent.match('Chrome\/[0-9]{1,}')
-             versionYNavStr=String(versionYNav).split('/');
-            version=versionYNavStr[1];
+            versionYNav=navigator.userAgent.match('Chrome\/[0-9]{1,}') // una vez sabemos el navegador buscamos la version con una expresión regular
+             versionYNavStr=String(versionYNav).split('/'); //separamos el navegador de la versión
+            version=versionYNavStr[1]; //guardamos la version en la variable a la que hace referencia su nombre
 
         }
         if (navigator.userAgent.indexOf('Firefox') > -1) {
@@ -52,8 +52,8 @@ y le devuelva en una nueva ventana el nombre y versión del navegador, el idioma
         }
 
 
-        function info() {
-            ventana = window.open("actividad_03_recurso.html", "Info", "height=500,width=500");
+        function info() { //Creamos una función para devolver la información del navegador
+            ventana = window.open("", "Info", "height=500,width=500"); //abrimos una nueva ventana con la informacion
             ventana.document.write("Navegador = " + navegador + "</br>");
             ventana.document.write("Versión =   " + version + "</br>");
             ventana.document.write("Idioma = " + navigator.language + "</br>");
