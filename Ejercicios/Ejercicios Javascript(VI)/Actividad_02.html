@@ -19,17 +19,17 @@ concreta que el usuario haya introducido. Muestra la cantidad de páginas del hi
     <input type="button" value="adelantarUsuario" onclick="paginaConcreta()">
     <script>
 
-        function atras() {
-            window.history.go(-1);
+        function atras() { //función para volver una página atrás.
+            window.history.go(-1); 
         }
 
-        function adelantar() {
+        function adelantar() { //función para ir a la página siguiente
             window.history.go(+1);
         }
 
-        function paginaConcreta() {
-            var numPag = prompt("A que página quieres ir");
-            window.history.go(numPag);
+        function paginaConcreta() { //funcion para ir a una página determinada del historial
+            var numPag = prompt("A que página quieres ir"); //Pedimos la página al usuario
+            window.history.go(numPag);//para ir hacia delante utilizamos el menos delante del número
         }
     </script>
 </body>
