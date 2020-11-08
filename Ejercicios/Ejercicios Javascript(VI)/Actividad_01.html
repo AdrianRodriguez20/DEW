@@ -20,16 +20,8 @@ Y el otro botón que sea capaz de cerrar esa nueva ventana abierta. -->
         var ventana;
 
         function abrir() {
-            ventana = window.open("", "Abierto", "height=100,width=200");
-            ventana.document.write("Nombre de la ventana= " + ventana.name + "</br>");
-            ventana.document.write("Ancho externo=   " + ventana.outerWidth + "</br>");
-            ventana.document.write("Ancho interno = " +  (ventana.innerHeight)+ "</br>");
-            ventana.document.write("Alto externo= " + ventana.outerHeight + "</br>");
-            ventana.document.write("Alto interno= " +(ventana.innerHeight)  + "</br>");
-            ventana.document.write("Scroll H= " + ventana.scrollX+ "</br>");
-            ventana.document.write("Scroll V= " + ventana.scrollY + "</br>");
-            ventana.document.write("Distancia desde la izquierda= " +  + "</br>");
-            ventana.document.write("Distancia desde arriba= " +  + "</br>");
+            ventana = window.open("actividad_01_recurso.html", "Abierto", "height=100,width=200");
+
         }
 
         function cerrar() {
