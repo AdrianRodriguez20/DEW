@@ -17,9 +17,9 @@ Averigua utilizando el objeto screen, el tamaño de la barra de tareas de Window
     <script>
         var ventana;
 
-        function infoSize() {
+        function infoSize() { //función que devuelve el tamaño de la barra total
             ventana = window.open("", "Abierto", "height=400,width=400");
-            ventana.document.write("Alto Barra de tareas= "+(screen.height-screen.availHeight)+ "px" +"</br>");
+            ventana.document.write("Alto Barra de tareas= "+(screen.height-screen.availHeight)+ "px" +"</br>"); //para averiguar el ancho restamos el total de la pantalla a la dimensión de la pestaña del navegador completo
             ventana.document.write("Ancho Barra de tareas= "+(screen.width)+"px"+"</br>");
         }
     </script>
