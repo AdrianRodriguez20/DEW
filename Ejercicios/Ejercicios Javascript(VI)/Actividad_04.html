@@ -16,11 +16,11 @@ Crea otro botón igual, pero que no se pueda ver el historial de la venta.
     <input type="button" value="Replace" onclick="replace()">
     <input type="button" value="Assign" onclick="assign()">
     <script>
-        function replace() {
+        function replace() { //esta función remplaza la página actual por una nueva pero no permite volver atrás
             location.replace("https://www.google.com/");
         }
 
-        function assign() {
+        function assign() { //esta función abre una nueva página con la posibilidad de volver atrás
             location.assign("https://www.google.com/");
         }
     </script>
