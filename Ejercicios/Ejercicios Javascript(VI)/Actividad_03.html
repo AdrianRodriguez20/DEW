@@ -25,21 +25,28 @@ y le devuelva en una nueva ventana el nombre y versión del navegador, el idioma
         var versionYNavStr;
         if (navigator.userAgent.indexOf('Chrome') > -1) {
             navegador = "Chrome";
-            versionYNav=navigator.userAgent.match('Chrome\/[1-9]{1,}')
+            versionYNav=navigator.userAgent.match('Chrome\/[0-9]{1,}')
              versionYNavStr=String(versionYNav).split('/');
             version=versionYNavStr[1];
 
         }
         if (navigator.userAgent.indexOf('Firefox') > -1) {
             navegador = "Firefox";
-            versionYNav=navigator.userAgent.match('Firefox\/[1-9]{1,}')
+            versionYNav=navigator.userAgent.match('Firefox\/[0-9]{1,}')
             versionYNavStr=String(versionYNav).split('/');
             version=versionYNavStr[1];
         }
 
         if (navigator.userAgent.indexOf('Edg') > -1) {
             navegador = "Edge";
-            versionYNav=navigator.userAgent.match('Edg\/[1-9]{1,}')
+            versionYNav=navigator.userAgent.match('Edg\/[0-9]{1,}')
+            versionYNavStr=String(versionYNav).split('/');
+            version=versionYNavStr[1];
+        }
+        
+        if (navigator.userAgent.indexOf('Safari') > -1) {
+            navegador = "Safari";
+            versionYNav=navigator.userAgent.match('Safari\/[0-9]{1,}')
             versionYNavStr=String(versionYNav).split('/');
             version=versionYNavStr[1];
         }
