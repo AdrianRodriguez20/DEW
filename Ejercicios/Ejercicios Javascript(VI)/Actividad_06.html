@@ -1,0 +1,96 @@
+<!--
+    ACTIVIDAD 6
+Cree una página web donde aparezcan los siguientes botones: 
+
+Abrir Ventana: abrirá una ventana de tamaño 400px*400px con la dirección www.google.es. La nueva ventana deberá aparecer centrada en la pantalla. 
+
+Cerrar Ventana: deberá cerrar la ventana que se acaba de crear. Si la ventana aún no se ha creado o bien el usuario la cerró, deberá mostrar un error que diga “No hay ventana que cerrar”. 
+
+Ampliar: modificará el tamaño de la ventana aumentando tanto el ancho como en 30px. Se mostrará un mensaje de error cuando no se pueda ampliar el alto o el ancho. 
+NOTA: para que funcione este y los siguientes apartados tiene que abrir una ventana en blanco, para ello quite la dirección www.google.es 
+
+Reducir: modificará el tamaño de la ventana disminuyendo tanto el ancho como en 30px. Se mostrará un mensaje de error cuando no se pueda reducir el alto o el ancho. 
+
+Mover: Ubicará la pantalla en la posición indicada previamente por el usuario (x e y). Los valores tendrán que ser enteros positivos. Antes de mover la nueva pantalla 
+tendrá que comprobar que la nueva posición de la ventana es posible teniendo en cuenta tanto la posición como su alto y ancho y el tamaño de la pantalla.
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ACTIVIDAD 6</title>
+    <meta charset="utf-8" />
+</head>
+
+
+
+<body>
+    <input type="button" value="Abrir" onclick="abrir()">
+    <input type="button" value="cerrar" onclick="cerrar()">
+    <input type="button" value="ampliar" onclick="ampliar()">
+    <input type="button" value="reducir" onclick="reducir()">
+    <input type="button" value="mover" onclick="mover()">
+    <script>
+        var ventana;
+
+
+        function abrir() {
+
+            // calculamos la posicion x e y para centrar la ventana
+            var y = parseInt((window.screen.height / 2) - (400 / 2));
+            var x = parseInt((window.screen.width / 2) - (400 / 2));
+
+            // mostramos la ventana centrada
+            ventana = window.open('', target = 'blank', "height=400,width=400" + ',top=' + y +
+                ',left=' + x, "resizable=no")
+
+        }
+
+        function cerrar() {
+            if (ventana.window == null) {
+
+                alert("No hay ventana que cerrar");
+            } else {
+                ventana.close();
+            }
+
+        }
+
+        function ampliar() {
+            if (ventana.outerHeight > 430 && ventana.outerWidth > 430) {
+                alert("No se puede ampliar más")
+            } else {
+                ventana.resizeTo(430, 430);
+                ventana.focus();
+            }
+
+        }
+
+        function reducir() {
+            if (ventana.outerHeight < 400 && ventana.outerWidth < 400) {
+                alert("No se puede reducir más")
+            } else if ( ventana.outerHeight ==400 && ventana.outerWidth  == 400) {
+                ventana.resizeTo(370, 370);
+                ventana.focus();
+            }else if (ventana.outerHeight ==430 && ventana.outerWidth == 430){
+                ventana.resizeTo(400, 400);
+                ventana.focus();
+            }
+        }
+
+        function mover() {
+            var posX = parseInt(prompt("Eje x: "));
+            var posY = parseInt(prompt("Eje y: "));
+
+            if (posX < window.screen.height && posY < window.screen.width) {
+                ventana.moveTo(posX, posY);
+                ventana.focus();
+            } else {
+                alert("No se puede realizar ese movimiento");
+            }
+
+        }
+    </script>
+</body>
+
+</html>

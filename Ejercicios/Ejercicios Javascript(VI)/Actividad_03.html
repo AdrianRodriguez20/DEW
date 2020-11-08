@@ -1,0 +1,60 @@
+<!--
+ACTIVIDAD 3
+Crea un botón en un documento html que al pulsar, el script averigüe si el usuario está conectado a Internet 
+y le devuelva en una nueva ventana el nombre y versión del navegador, el idioma y si tiene activadas o no las cookies y Java.
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ACTIVIDAD 3</title>
+    <meta charset="utf-8" />
+</head>
+
+
+
+<body>
+    <input type="button" value="info" onclick="info()">
+
+    <script>
+        var ventana;
+        var navegador;
+        var version
+        var versionYNav;
+        var versionYNavStr;
+        if (navigator.userAgent.indexOf('Chrome') > -1) {
+            navegador = "Chrome";
+            versionYNav=navigator.userAgent.match('Chrome\/[1-9]{1,}')
+             versionYNavStr=String(versionYNav).split('/');
+            version=versionYNavStr[1];
+
+        }
+        if (navigator.userAgent.indexOf('Firefox') > -1) {
+            navegador = "Firefox";
+            versionYNav=navigator.userAgent.match('Firefox\/[1-9]{1,}')
+            versionYNavStr=String(versionYNav).split('/');
+            version=versionYNavStr[1];
+        }
+
+        if (navigator.userAgent.indexOf('Edg') > -1) {
+            navegador = "Edge";
+            versionYNav=navigator.userAgent.match('Edg\/[1-9]{1,}')
+            versionYNavStr=String(versionYNav).split('/');
+            version=versionYNavStr[1];
+        }
+
+
+        function info() {
+            ventana = window.open("actividad_03_recurso.html", "Info", "height=500,width=500");
+            ventana.document.write("Navegador = " + navegador + "</br>");
+            ventana.document.write("Versión =   " + version + "</br>");
+            ventana.document.write("Idioma = " + navigator.language + "</br>");
+            ventana.document.write("Cookies= " + navigator.cookieEnabled + "</br>");
+            ventana.document.write("Conectado= " + navigator.onLine + "</br>");
+            ventana.document.write("Java= " + navigator.javaEnabled() + "</br>");
+        }
+    </script>
+</body>
+
+</html>

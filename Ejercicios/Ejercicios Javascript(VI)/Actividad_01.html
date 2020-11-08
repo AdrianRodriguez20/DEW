@@ -1,0 +1,41 @@
+<!--ACTIVIDAD 1
+Crea dos botones en un documento html que al pulsar, uno abra una nueva ventana de ancho 200px y alto 100px 
+con la siguiente información:
+Nombre de la ventana, Ancho externo, Alto externo, Ancho interno, Alto interno, Scroll H, Scroll V, 
+Distancia desde la izquierda y Distancia desde arriba.
+Y el otro botón que sea capaz de cerrar esa nueva ventana abierta. -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ACTIVIDAD 1</title>
+
+</head>
+
+<body>
+    <input type="button" value="abrir" onclick="abrir()">
+    <input type="button" value="cerrar" onclick="cerrar()">
+    <script>
+        var ventana;
+
+        function abrir() {
+            ventana = window.open("", "Abierto", "height=100,width=200");
+            ventana.document.write("Nombre de la ventana= " + ventana.name + "</br>");
+            ventana.document.write("Ancho externo=   " + ventana.outerWidth + "</br>");
+            ventana.document.write("Ancho interno = " +  (ventana.innerHeight)+ "</br>");
+            ventana.document.write("Alto externo= " + ventana.outerHeight + "</br>");
+            ventana.document.write("Alto interno= " +(ventana.innerHeight)  + "</br>");
+            ventana.document.write("Scroll H= " + ventana.scrollX+ "</br>");
+            ventana.document.write("Scroll V= " + ventana.scrollY + "</br>");
+            ventana.document.write("Distancia desde la izquierda= " +  + "</br>");
+            ventana.document.write("Distancia desde arriba= " +  + "</br>");
+        }
+
+        function cerrar() {
+            ventana.close();
+        }
+    </script>
+</body>
+
+</html>

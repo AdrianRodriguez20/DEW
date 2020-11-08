@@ -1,0 +1,37 @@
+<!--
+    ACTIVIDAD 2
+Crea tres botones en un documento html que al pulsar, uno te permita visitar la página anterior.
+Otro que al pulsar te permita visitar la página siguiente. Y un tercero que permita ir a una página 
+concreta que el usuario haya introducido. Muestra la cantidad de páginas del historial.
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ACTIVIDAD 2</title>
+
+</head>
+
+<body>
+    <input type="button" value="atras" onclick="atras()">
+    <input type="button" value="adelantar" onclick="adelantar()">
+    <input type="button" value="adelantarUsuario" onclick="paginaConcreta()">
+    <script>
+
+        function atras() {
+            window.history.go(-1);
+        }
+
+        function adelantar() {
+            window.history.go(+1);
+        }
+
+        function paginaConcreta() {
+            var numPag = prompt("A que página quieres ir");
+            window.history.go(numPag);
+        }
+    </script>
+</body>
+
+</html>
