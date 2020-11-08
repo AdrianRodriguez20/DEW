@@ -34,7 +34,7 @@ tendrá que comprobar que la nueva posición de la ventana es posible teniendo e
         var ventana;
 
 
-        function abrir() {
+        function abrir() { //funcion para abrir una nueva ventana
 
             // calculamos la posicion x e y para centrar la ventana
             var y = parseInt((window.screen.height / 2) - (400 / 2));
@@ -46,18 +46,18 @@ tendrá que comprobar que la nueva posición de la ventana es posible teniendo e
 
         }
 
-        function cerrar() {
-            if (ventana.window == null) {
+        function cerrar() { //funcion para cerrar la ventana anterior 
+            if (ventana.window == null) { //si no hay ninguna ventana abierta avisamos al usuario
 
-                alert("No hay ventana que cerrar");
+                alert("No hay ventana que cerrar"); 
             } else {
                 ventana.close();
             }
 
         }
 
-        function ampliar() {
-            if (ventana.outerHeight > 430 && ventana.outerWidth > 430) {
+        function ampliar() { //función para ampliar la ventana
+            if (ventana.outerHeight > 430 && ventana.outerWidth > 430) {//si la ventana es mayor de 430 no se puede ampliar
                 alert("No se puede ampliar más")
             } else {
                 ventana.resizeTo(430, 430);
@@ -66,26 +66,26 @@ tendrá que comprobar que la nueva posición de la ventana es posible teniendo e
 
         }
 
-        function reducir() {
-            if (ventana.outerHeight < 400 && ventana.outerWidth < 400) {
+        function reducir() {//función para reducir la ventana
+            if (ventana.outerHeight < 400 && ventana.outerWidth < 400) {//si la ventana es menor de 400 no se puede reducir más
                 alert("No se puede reducir más")
-            } else if ( ventana.outerHeight ==400 && ventana.outerWidth  == 400) {
+            } else if ( ventana.outerHeight ==400 && ventana.outerWidth  == 400) {//si la ventana es igual a 400 la reducimos 30px
                 ventana.resizeTo(370, 370);
                 ventana.focus();
-            }else if (ventana.outerHeight ==430 && ventana.outerWidth == 430){
+            }else if (ventana.outerHeight ==430 && ventana.outerWidth == 430){//si la ventana es igual a 430 la reducimos a 30px
                 ventana.resizeTo(400, 400);
                 ventana.focus();
             }
         }
 
-        function mover() {
-            var posX = parseInt(prompt("Eje x: "));
-            var posY = parseInt(prompt("Eje y: "));
+        function mover() {//función para mover la ventana
+            var posX = parseInt(prompt("Eje x: "));//pedimos al usuario la posición en el eje x a la que quiere mover la ventana
+            var posY = parseInt(prompt("Eje y: "));//pedimos al usuario la posición en el eje y a la que quiere mover la ventana
 
-            if (posX < window.screen.height && posY < window.screen.width) {
+            if (posX < window.screen.height && posY < window.screen.width) {//si la posición esta dentro de los margenes de la pantalla movemos la ventana
                 ventana.moveTo(posX, posY);
                 ventana.focus();
-            } else {
+            } else {//de no ser asi informamos al usuario que ese movimiento no se puede realizar 
                 alert("No se puede realizar ese movimiento");
             }
 
