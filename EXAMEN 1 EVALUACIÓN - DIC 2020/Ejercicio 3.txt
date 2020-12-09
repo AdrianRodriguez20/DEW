@@ -1,0 +1,14 @@
+a) el formulario se debe validar en el lado del cliente , antes de ser enviado.
+b) document.getElementsByTagName("div")
+c) añadiendo la fecha de expiración ,  document.cookie = tituloPeli + ";expires=Thu, 01 Jan 1970 00:00:00 UTC;"
+d) que cargue la funcion al principio 
+e) 
+ var xmlhttp = new XMLHttpRequest(); //realizamos la conexión 
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    var myObj = JSON.parse(this.responseText); 
+
+                } 
+            };
+            xmlhttp.open("POST", "http://localhost/ahorcado/films.json", true);
+            xmlhttp.send();

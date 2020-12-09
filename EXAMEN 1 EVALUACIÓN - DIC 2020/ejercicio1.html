@@ -1,0 +1,65 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>09/12/20 - Examen: Ejercicio 1</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body>
+    <h1>Ejercicio 1</h1>
+    <div>
+        <h2>Artículos</h2>
+        <form name="cesta" >
+            <div>
+                <div>
+                    <input id="1" name="Playstation 5" type="checkbox" value="499.95" onclick="aniadir(id)"/>
+                    <span>Playstation 5</span> -
+                    <span>499.95</span>€
+                </div>
+                <div>
+                    <input id="2" name="TV Xiaomi 43" type="checkbox"  value="324.95" onclick="aniadir(id)"/>
+                    <span>TV Xiaomi 43"</span> -
+                    <span>324.95</span>€
+                </div>
+                <div>
+                    <input id="3" name="Nevera Samsung" type="checkbox" value="1099.95" onclick="aniadir(id)"/>
+                    <span>Nevera Samsung</span> -
+                    <span>1099.95</span>€
+                </div>
+                <div>
+                    <input id="4" name="Lavadora/Secadora Balay" type="checkbox" value="1099.95" onclick="aniadir(id)"/>
+                    <span>Lavadora/Secadora Balay</span> -
+                    <span>1049.95</span>€
+                </div>
+                <div>
+                    <input id="5" name="Xbox Series S" type="checkbox"value="299.95" onclick="aniadir(id)" />
+                    <span>Xbox Series S</span> -
+                    <span>299.95</span>€
+                </div>
+
+            </div>
+            <div>
+                <button type="button" onclick="mostrar(),unselect(),calcularTotal(),calcularIGIC()" >Agregar al Carrito</button>
+            </div>
+        </form>
+    </div>
+    <div>
+        <h2>Cesta de la compra</h2>
+        <div>
+            <div id = lista></div>
+            <div>
+                <p><strong>IGIC (7%): </strong><span id = "igic"></span>€</p>
+                <p><strong>Importe Total: </strong><span id="total"></span>€</p>
+            </div>
+        </div>
+
+        <script src="assets/js/ejercicio1.js"></script>
+</body>
+
+</html>
