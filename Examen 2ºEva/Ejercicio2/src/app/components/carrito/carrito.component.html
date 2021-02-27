@@ -1,0 +1,66 @@
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h1>Cesta</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+
+        </div>
+        <div class="col-2">
+            <label>Producto</label>
+        </div>
+
+        <div class="col-2">
+            <label>Unidades</label>
+        </div>
+
+        <div class="col-2">
+            <label>und/€</label>
+        </div>
+
+        <div class="col-2">
+            <label>Precio total</label>
+        </div>
+    </div>
+    <hr>
+    <div class="col-12 articles" *ngFor="let article of articles">
+        <div *ngIf="article.quantity>0">
+            <div class="row mt-3">
+                <div class="col-2">
+                    <img class="poster" src="{{ article.mainImage }}" />
+                </div>
+                <div class="col-2">
+                    <label>{{ article.name }}</label>
+                </div>
+
+                <div class="col-2">
+                    <label>{{ article.quantity }}</label>
+                </div>
+
+                <div class="col-2">
+                    <label>{{article.price }}</label>
+                </div>
+
+                <div class="col-2">
+                    <label class="totalProducto">{{ (article.quantity*article.price).toFixed(2) }}</label>
+                </div>
+                <div class="col-2">
+                    <button class="btn btn-success mr-2" (click)="add(article)">Añadir</button>
+                    <button type="button" class="btn btn-danger" (click)="remove(article)"><i
+                            class="fa fa-trash"></i></button>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-12 mb-3">
+            <button type="button" id="resultado" class="btn btn-info float-right" (click)="total()">Ver Total</button>
+        </div>
+    </div>
+</div>

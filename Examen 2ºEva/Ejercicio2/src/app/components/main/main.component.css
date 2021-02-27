@@ -1,0 +1,28 @@
+img {
+    width: 100%;
+}
+
+h2 {
+    font-weight: 600;
+  
+}
+
+p {
+    margin-top: 40px;
+}
+h1{
+    text-align:center;
+    font-family:sans-serif;
+}
+h4{
+    text-align:center;
+}
+a{
+    text-decoration:none;
+}
+.card-footer{
+ background-color:#9933CC;
+}
+.card-footer:hover{
+    background-color: #2BBBAD;
+}

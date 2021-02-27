@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" routerLink="/">Shop</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+  <li class="nav-item active">
+          <a class="nav-link" routerLink="/category/1">Televisión</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/category/2">Informática</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/category/3">Móvil</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/category/4">Videojuegos</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/category/5">Hogar</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/category/10">Otros</a>
+        </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0 mr-3">
+      <app-article-search></app-article-search>
+    </form>
+    <a routerLink="/carrito">
+    <button class="btn btn-danger" type="button"> <i class="fa fa-shopping-cart" style="font-size:36px; color:white"></i></button>
+    </a>
+  </div>
+</nav>

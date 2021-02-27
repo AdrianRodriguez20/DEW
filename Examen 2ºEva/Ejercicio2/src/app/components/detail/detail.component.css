@@ -1,0 +1,22 @@
+img {
+    width: 100%;
+}
+
+h2 {
+    font-weight: 600;
+}
+
+p {
+    margin-top: 40px;
+}
+.description{
+    text-align: justify;
+}
+.price{
+    font-size: 20px;
+    text-align: right;
+}
+button:hover{
+    background-color: darkviolet;
+    border-color: darkviolet;
+}

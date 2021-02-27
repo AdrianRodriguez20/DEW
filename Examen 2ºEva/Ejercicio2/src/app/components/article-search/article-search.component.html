@@ -1,0 +1,11 @@
+<div id="search-component">
+    <input #searchBox id="search-box" id="search-box" class="form-control buscar mr-sm-2" type="search" placeholder="Search" (input)="search(searchBox.value)">
+    <ul class="search-result">
+      <li *ngFor="let article of articles$  | async" >
+        <a routerLink="/detail/{{article.id}}">
+          {{article.name}}
+        </a>
+      </li>
+    </ul>
+  </div>
+  

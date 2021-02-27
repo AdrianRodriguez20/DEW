@@ -1,0 +1,13 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-6">
+            <img class="poster" src="{{ article.mainImage }}" />
+        </div>
+        <div class="col-6">
+            <h2>{{ article.name }}</h2>
+            <div class="description">{{ article.description }}</div>
+            <div class="price">{{ article.price }}€</div>
+            <button type="button" class="btn btn-success text-white"  (click)="show()">Añadir</button>
+        </div>
+    </div>  
+</div>
