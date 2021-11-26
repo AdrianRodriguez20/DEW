@@ -1,0 +1,15 @@
+<div id="search-component">
+  <input #searchBox id="search-box" id="search-box" class="form-control buscar mr-sm-2" type="search" placeholder="Search" (input)="search(searchBox.value)">
+  <ul class="search-result">
+    <li *ngFor="let hero of heroes$  | async" >
+      <a routerLink="/detailHero/{{hero.id}}">
+        {{hero.name}}
+      </a>
+    </li>
+    <li *ngFor="let villain of villains$  | async" >
+      <a routerLink="/detailVillain/{{villain.id}}">
+        {{villain.name}}
+      </a>
+  </ul>
+</div>
+

@@ -1,0 +1,49 @@
+<div *ngIf="villain">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xl-12">
+        <h2 class="text-center">{{villain.name | uppercase}} Details</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-3">
+      </div>
+      <div class="col-xl-3">
+        <div>
+          <label>Nombre:
+            <input class="form-control" [(ngModel)]="villain.name" placeholder="name" />
+          </label><br>
+          <label>Fecha Nacimiento:
+            <input class="form-control" id="fechaNacimiento" [(ngModel)]="villain.fechaNacimiento" />
+            <br>
+            <div id="edad"></div>
+          </label>
+          <br>
+          <label>Descripción:
+            <textarea class="form-control" [(ngModel)]="villain.descripcion" rows="5" cols="50"></textarea>
+          </label>
+          <br>
+          <label>Color:
+              <input class="form-control"  id="color" [(ngModel)]="villain.color"/>
+          </label>
+          <br>
+          <button class="bg-dark text-white"(click)="seeColour()">See Colour</button>
+          <button class="bg-warning text-white" (click)="year()">Age</button>
+          <button class="bg-info text-white" (click)="goBack()">go back</button>
+          <button class="bg-success text-white" (click)="save()">save</button>
+        </div>
+      </div>
+      <div class="col-xl-3">
+        <label class="text-center">Avatar:
+          <img src="{{villain.avatar}}" />
+        </label>
+        <br>
+        <label>
+          <input class="form-control linkImg" [(ngModel)]="villain.avatar" placeholder="avatar" />
+        </label>
+      </div>
+      <div class="col-xl-3">
+      </div>
+    </div>
+  </div>
+</div>

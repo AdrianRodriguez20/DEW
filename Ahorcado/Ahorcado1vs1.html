@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Adrián Rodríguez Fuentes">
+    <title>Ahorcado</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        .teclado {
+            padding-top: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        .teclado div {
+            padding: 5px;
+        }
+
+        .tablero {
+            font-size: 50px;
+            letter-spacing: 6pt;
+
+        }
+
+        .game {
+            padding-top: 100px;
+        }
+
+        .stats {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body onload="play()">
+    <script>
+        class Partida {
+            constructor(palabra) { //Constructor de Partida , el único parámetro que recibe es la palabra.
+                this.palabra = palabra; //Nombre de la Película;
+                this.tablero = this.crearTablero(); //Tablero (Array con los espacios para completar)
+                this.fallos = 0; //Contador de fallos 
+                this.win = false; //Boolean Ganar o perder la partida
+                this.tableroResuelto = this.palabra.split(
+                    ''); //el tablero resuelto (Array con cada letra de la palabra ) para comparar.
+
+            }
+
+            crearTablero = function () { //función para crear el tablero
+                var huecos = ""; //variable del tablero
+                this.tableroResuelto = this.palabra.split('');
+                for (let i = 0; i < this.tableroResuelto.length; i++) {
+                    if (this.tableroResuelto[i] != ' ') { //si la letra no es un espacio añadimos un guión
+                        huecos += "_"
+                    } else { //y si hay un espacio añadimos el mismo
+                        huecos += " ";
+                    }
+                }
+                var tableroPalabra = huecos.split(''); //convertimos huecos en un array
+                return tableroPalabra;
+            }
+            comprobarLetra = function (letra) { //funcion para comprobar las letras
+                var acierto = false; //establecemos los aciertos a falso
+                for (let i = 0; i < this.tablero.length; i++) { //recorremos el tablero
+                    if (this.tableroResuelto[i] == letra) { //si la letra se encuentra en el tablero resuelto 
+                        this.tablero[i] = letra; //la añadimos al tablero vacio
+                        acierto = true; // y establecemos los aciertos a true
+                    }
+                }
+                if (!acierto) {
+                    this.fallos++; //cuando los aciertos esten en false se incrementan los fallos
+                }
+
+                var correctos = 0; //creamos la variable numerica correctos
+
+                for (let i = 0; i < this.tablero.length; i++) { //recorremos el tablero
+                    if (this.tablero[i] == this.tableroResuelto[i]) { // si la letras en ambos coinciden
+                        correctos++; //se incrementan los aciertos
+
+                    };
+                    if (correctos == this.tablero.length && this.fallos <
+                        6
+                        ) { //si el número de letras correctas es igual a la longitud del tabero y los fallos son inferiores a 6
+                        this.win = true; //el usuario gana la partida
+                    };
+                }
+                switch (this
+                    .fallos) { //canvas , cuando los fallos se incrementen se va rellenando el muñeco del canvas
+                    case 1:
+                        context.strokeStyle = '#000000';
+                        context.save();
+                        context.translate(343.5, 117.5);
+                        context.scale(1, 0.8666666666666667);
+                        context.beginPath();
+                        context.arc(0, 0, 20, 0, 6.283185307179586, false);
+                        context.stroke();
+                        context.closePath();
+                        context.restore();
+                        break;
+                    case 2:
+                        context.strokeStyle = '#000000';
+                        context.beginPath();
+                        context.moveTo(349, 133);
+                        context.lineTo(349, 205);
+                        context.stroke();
+                        context.closePath();
+                        break;
+                    case 3:
+
+                        context.strokeStyle = '#000000';
+                        context.beginPath();
+                        context.moveTo(348, 203);
+                        context.lineTo(326, 248);
+                        context.stroke();
+                        context.closePath();
+                        break;
+                    case 4:
+                        context.strokeStyle = '#000000';
+                        context.beginPath();
+                        context.moveTo(350, 200);
+                        context.lineTo(375, 247);
+                        context.stroke();
+                        context.closePath();
+                        break;
+                    case 5:
+                        context.strokeStyle = '#000000';
+                        context.beginPath();
+                        context.moveTo(351, 152);
+                        context.lineTo(387, 192);
+                        context.stroke();
+                        context.closePath();
+                        break;
+                    case 6:
+                        context.strokeStyle = '#000000';
+                        context.beginPath();
+                        context.moveTo(347, 154);
+                        context.lineTo(317, 190);
+                        context.stroke();
+                        context.closePath();
+                        break;
+                    default:
+
+                };
+                if (this.fallos == 6) { //si los fallos son igual a 6 
+                    this.win = false; // el usuario pierde la partida
+                }
+            }
+
+
+        }
+
+        var listaPartidas = new Map(); //creamos un map para almacenar las partidas
+        var jugador; // la variable jugador que contiene el nombre del usuario
+        var partida1; // partida 1 
+        var historial = []; //array de las partidas
+        var tituloPeli; //variable para guardar el titulo de la pelicula
+
+        function play() { // funcion para jugar , que cargamos en el body 
+            function borrarCookie(tituloPeli) { //creamos la funcion para borrar las cookies
+                document.cookie = tituloPeli + ";expires=Thu, 01 Jan 1970 00:00:00 UTC;"
+            }
+            borrarCookie(tituloPeli); // primero borramos las cookies por si hay alguna 
+            jugador = prompt("nombre").toUpperCase(); //pedimos el nombre del jugador 
+            tituloPeli = prompt("palabra").toUpperCase() //y el titulo de la pelicula a su contrincante 
+            partida1 = new Partida(tituloPeli); //creamos la partida
+
+            function crearCookie(
+                tituloPeli
+                ) { // en las cookies guardamos la partida para luego , al ganar mostrar al jugador titulo, poster ,..
+                document.cookie = tituloPeli;
+            }
+            crearCookie(tituloPeli);
+
+            function Ranked(jugador,
+                partida1) { //creamos la funcion ranked que recibe como parametros el nombre del jugador y y la partida
+
+                if (listaPartidas.has(jugador)) { //si el map contiene el jugador 
+                    for (var [key, value] of listaPartidas) { //recorremos el map 
+                        if (key == jugador) { // si la clave coincide con el jugador 
+                            value.push(partida1); //añadimos la partida al historial (array de partidas) al jugador
+
+                        }
+                    }
+                } else { //si no
+                    historial = [partida1]; // guardamos la partida en un historial (array de partidas)
+                    listaPartidas.set(jugador, historial); //y la añadimos al map
+                }
+
+            }
+            Ranked(jugador, partida1); //utilizamos la funcion creada previamente
+            document.getElementById("tablero").innerHTML = partida1.tablero.join(''); // mostramos el tablero al usuario
+            let cadena = "QWERTYUIOPASDFGHJKLÑZXCVBNM"; //creamos una cadena de todas las letras 
+            for (let i = 0; i < cadena.length; i++) { //la recorremos 
+                document.getElementById(cadena.charAt(i)).style.backgroundColor =
+                    "#000000"; // y pintamos las letras de negro , esto es para que cuando empiece la partida no se queden las letras marcadas de la anterior.
+            }
+            //Borramos canvas
+            context.fill();
+            // dibujamos y rellenamos un rectángulo
+            context.fillStyle = "#FFFFFF";
+            context.fillRect(260, 98, 150, 179);
+            // rellenamos texto
+           
+
+        }
+
+        function escribir(letra, id) { //funcion para escribir en el tablero recibe como parámetro la letra y la id 
+            if (partida1.win == true || partida1.fallos ==
+                6) { //con este if paramos la partida por si el usuario sigue presionando teclas 
+                alert("Partida Finalizada")
+            } else {
+                document.getElementById(id).style.backgroundColor =
+                    "#FF0040"; // cada vez que pulsemos una tecla esta pasa a color rojo
+                partida1.comprobarLetra(letra); // comprobamos si la tecla está en la palabra 
+                document.getElementById("tablero").innerHTML = partida1.tablero.join(''); //pintamos el nuevo tablero
+                if (partida1.win == true) { // si el usuario gana la partida 
+                    document.getElementById("fichaTecnica").innerHTML =
+                        "<iframe width='1500' height='500' frameborder='0' scrolling='no'  marginheight='0' marginwidth='0' src='Producto1vs1.html'> </iframe>"
+                } // le enseñamos un resumen de la pelicula que abrimos debajo del juego con un iframe
+            }
+
+
+        }
+    </script>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 ">
+                <h1> Ahorcado</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-5 col-md-5 ">
+                <canvas id="imageView" width="500" height="400"></canvas>
+                <div id="canvas">
+                    <script type="text/javascript" src="canvas.js"></script>
+                </div>
+
+            </div>
+
+            <div class="col-lg-5 col-md-5 game ">
+                <div id="tablero" class="tablero">
+                </div>
+                <div class="teclado">
+                    <div>
+                        <input type="button" class="btn btn-dark" id="Q" value="Q" onclick="escribir(this.value,id)">
+                        <input type="button" class="btn btn-dark" id="W" value="W" onclick="escribir(this.value,id)">
+                        <input type="button" class="btn btn-dark" id="E" value="E" onclick="escribir(this.value,id)">
+                        <input type="button" class="btn btn-dark" id="R" value="R" onclick="escribir(this.value,id)">
+                        <input type="button" class="btn btn-dark" id="T" value="T" onclick="escribir(this.value,id)">
+                        <input type="button" class="btn btn-dark" id="Y" value="Y" onclick="escribir(this.value,id)">
+                        <input type="button" class="btn btn-dark" id="U" value="U" onclick="escribir(this.value,id)">
+                        <input type="button" class="btn btn-dark" id="I" value="I" onclick="escribir(this.value,id)">
+                        <input type="button" class="btn btn-dark" id="O" value="O" onclick="escribir(this.value,id)">
+                        <input type="button" class="btn btn-dark" id="P" value="P" onclick="escribir(this.value,id)">
+                    </div>
+
+                    <div>
+                        <input type="button" class="btn btn-dark" id="A" value="A" onclick="escribir(this.value,id)">
+                        <input type="button" class="btn btn-dark" id="S" value="S" onclick="escribir(this.value,id)">
+                        <input type="button" class="btn btn-dark" id="D" value="D" onclick="escribir(this.value,id)">
+                        <input type="button" class="btn btn-dark" id="F" value="F" onclick="escribir(this.value,id)">
+                        <input type="button" class="btn btn-dark" id="G" value="G" onclick="escribir(this.value,id)">
+                        <input type="button" class="btn btn-dark" id="H" value="H" onclick="escribir(this.value,id)">
+                        <input type="button" class="btn btn-dark" id="J" value="J" onclick="escribir(this.value,id)">
+                        <input type="button" class="btn btn-dark" id="K" value="K" onclick="escribir(this.value,id)">
+                        <input type="button" class="btn btn-dark" id="L" value="L" onclick="escribir(this.value,id)">
+                        <input type="button" class="btn btn-dark" id="Ñ" value="Ñ" onclick="escribir(this.value,id)">
+                    </div>
+
+                    <div>
+                        <input type="button" class="btn btn-dark" id="Z" value="Z" onclick="escribir(this.value,id)">
+                        <input type="button" class="btn btn-dark" id="X" value="X" onclick="escribir(this.value,id)">
+                        <input type="button" class="btn btn-dark" id="C" value="C" onclick="escribir(this.value,id)">
+                        <input type="button" class="btn btn-dark" id="V" value="V" onclick="escribir(this.value,id)">
+                        <input type="button" class="btn btn-dark" id="B" value="B" onclick="escribir(this.value,id)">
+                        <input type="button" class="btn btn-dark" id="N" value="N" onclick="escribir(this.value,id)">
+                        <input type="button" class="btn btn-dark" id="M" value="M" onclick="escribir(this.value,id)">
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-2 col-md-2 game ">
+
+                <script>
+                    function stats() { //creamos la función para las estadisticas 
+                        var nombre = jugador; //en la variable nombre guardamos el nombre del jugador
+                        var victorias = 0; // creamos la variable victorias y la establecemos a cero
+                        var derrotas = 0; // creamos la variable derrotas y la establecemos a cero
+                        var partidasTotales = 0; //así como de partidas totales
+                        for (let i = 0; i < listaPartidas.get(nombre.toUpperCase())
+                            .length; i++) { //recorremos la lista partidas buscando el usuario
+
+                            if (listaPartidas.get(nombre.toUpperCase())[i].win == true) { // si ha ganado la partida , 
+                                victorias++; //incrementamos las victorias
+                            } else {
+                                derrotas++; // de lo contrario se incrementan las derrotas
+                            }
+
+                        }
+                        partidasTotales = victorias + derrotas // para saber el total de partidas sumamos ambas
+                        return "Partidas ganadas " + victorias + " de " +
+                            partidasTotales; // devolvemos un string con las partidas ganadas sobre las totales
+                    }
+                </script>
+
+                <input type="button" class="btn btn-success" value="Play again" onclick="play()">
+                <script>
+                    function saludar() { //funcion para crear localStorage
+                        localStorage.clear(); //limpiamos el localStorage
+                        alert(
+                            "El navegador soporta webStorage"
+                            ); //avisamos al usuario de que el navegador soporta webStorage
+                        if (localStorage.getItem("usuario") != null) { //si el usuario es igual a nulo 
+                            var nombre = prompt("Como te llamas"); // preguntamos como se llama 
+                            if (localStorage)
+                                document.getElementById("saludo").innerHTML = "Bienvenido " + localStorage.getItem(
+                                    "usuario") //saludamos al usuario
+                        } else {
+                            var nombre = prompt("Como te llamas");
+                            //añadir al usuario
+                            localStorage.setItem("usuario", nombre);
+                            //mostrar un item
+                            var estadisticas = stats(); //guardamos la funcion anterior en estadisticas
+                            localStorage.setItem("UltimosResultados",
+                                estadisticas); // y la guardamos en el localStorage como Ultimos resultados 
+
+                            document.getElementById("saludo").innerHTML = "Bienvenido " + localStorage.getItem(
+                                "usuario"); // saludamos al usuario
+
+                            document.getElementById("lastStats").innerHTML = "Ultimo Ranked: " + localStorage.getItem(
+                                "UltimosResultados"); //mostramos sus ultimos resultados
+                        }
+                    }
+                </script>
+                <input type="button" class="btn btn-danger stats" value="Guardar Estadisticas" onclick="saludar()">
+                <h6 id="saludo"></h6>
+                <h6 id="lastStats"></h6>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="fichaTecnica">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</body>
+
+</html>

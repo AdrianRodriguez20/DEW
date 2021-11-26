@@ -1,0 +1,14 @@
+<div class="mensaje" *ngIf="messageService.messages.length">
+  <div class="dropdown">
+  
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Messages
+    </button>
+    <button class="btn btn-warning"(click)="messageService.clear()"><i class="fas fa-trash-alt"></i></button>
+
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <div class="dropdown-item" *ngFor='let message of messageService.messages'> {{message}} </div>
+    </div>
+  </div> 
+</div>
+

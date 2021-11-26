@@ -1,0 +1,28 @@
+<div class="container-fluid mt-3">
+	<div class="row">
+		<div class="col-xl-12">
+      <h2>My Heroes</h2>
+		</div>
+	</div>
+  <div class="row">
+		<div class=" col-xl-5">
+      <div class="input-group">
+        <input #heroName class="form-control rounded" placeholder="Hero name" aria-label="Search" aria-describedby="search-addon" />
+        <button type="button" class="btn btn-primary" (click)="add(heroName.value); heroName.value=''">Add</button>
+      </div>
+      
+      <ul class="heroes ">
+        <li  *ngFor="let hero of heroes">
+          <a routerLink="/detailHero/{{hero.id}}">
+            <span class="badge">{{hero.id}}</span> {{hero.name}}
+          </a>
+          <button type="button" class="btn delete" title="delete hero" (click)="delete(hero)">x</button>
+        </li>
+      </ul>
+		</div>
+    <div class=" fondo col-xl-7">
+
+    </div>
+	</div>
+</div>
+

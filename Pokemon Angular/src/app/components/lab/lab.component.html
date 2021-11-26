@@ -1,0 +1,29 @@
+Laboratorio
+<div class="col-12 pokemons" *ngFor="let pokemon of pokemons">
+    <div *ngIf="pokemon.pokemonNumber>100">
+        <div class="row mt-3">
+            <div class="col-2">
+                <img class="poster" src="{{ pokemon.image }}" />
+            </div>
+            <div class="col-2">
+                <label id="nombre">{{ pokemon.name }}</label>
+                <label>{{ (pokemon.pokemonNumber-200).toFixed(2) }}</label>
+            </div>
+
+            <div class="col-2">
+                <label>{{ pokemon.category }}</label>
+            </div>
+
+            <div class="col-2">
+                <label>{{pokemon.race }}</label>
+            </div>
+
+            <div class="col-2">
+                <button type="button" class="btn btn-danger" (click)="remove(pokemon)"><i
+                        class="fa fa-trash"></i></button>
+            </div>
+        </div>
+
+    </div>
+
+</div>

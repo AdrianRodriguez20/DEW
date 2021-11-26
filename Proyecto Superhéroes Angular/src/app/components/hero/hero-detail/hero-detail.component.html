@@ -1,0 +1,49 @@
+<div *ngIf="hero">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xl-12">
+        <h2 class="text-center">{{hero.name | uppercase}} Details</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xl-2">
+      </div>
+      <div class="col-xl-4">
+        <div>
+          <label>Nombre:
+            <input class="form-control" [(ngModel)]="hero.name" placeholder="name" />
+          </label><br>
+          <label>Fecha Nacimiento:
+            <input class="form-control"  id="fechaNacimiento" [(ngModel)]="hero.fechaNacimiento" />
+            <br>
+            <div id="edad"></div>
+          </label>
+          <br>
+          <label>Descripción:
+            <textarea class="form-control" [(ngModel)]="hero.descripcion" rows="4" cols="50">
+          </textarea>
+          </label>
+          <br>
+          <label>Color:
+            <input class="form-control"  id="color"  [(ngModel)]="hero.color"/>
+          </label>
+          <br>
+          <button class="bg-dark text-white"(click)="seeColour()">See Colour</button>
+          <button class="bg-warning text-white" (click)="year()">Age</button>
+          <button class="bg-info text-white" (click)="goBack()">go back</button>
+          <button class="bg-success text-white" (click)="save()">save</button>
+        </div>
+      </div>
+      <div class="col-xl-3">
+        <label class="text-center">Avatar:
+          <img src="{{hero.avatar}}" />
+        </label><br>
+        <label>
+          <input class="form-control linkImg" [(ngModel)]="hero.avatar" placeholder="avatar" />
+        </label>
+      </div>
+      <div class="col-xl-3">
+      </div>
+    </div>
+  </div>
+</div>

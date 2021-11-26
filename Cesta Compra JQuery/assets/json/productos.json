@@ -1,0 +1,37 @@
+[
+{
+    "producto": "Playstation 5",
+    "precio": 500
+  },
+  {
+    "producto": "TV Xiaomi 43",
+    "precio": 324.95
+  },
+  {
+    "producto": "Nevera Samsung",
+    "precio": 1099.95
+  },
+  {
+    "producto": "Lavadora/Secadora Balay",
+    "precio": 1099.95
+  },
+  {
+    "producto": "Xbox Series S",
+    "precio": 299.95
+  },
+
+  {
+    "producto": "Motorola",
+    "precio": 105
+  },
+  {
+    "producto": "Adidas",
+    "precio": 122
+  },
+  {
+    "producto": "The North Face",
+    "precio": 300
+  }
+ 
+
+]

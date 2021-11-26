@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <img class="poster" src="{{ article.mainImage }}" />
+        </div>
+        <div class="col-6">
+            <h2>{{ article.name }}</h2>
+            <label>{{ article.description }}</label>
+            <label>{{ article.price }}</label>
+        </div>
+        <button class="bg-info text-white" (click)="goBack()">go back</button>
+    </div>
+    
+</div>

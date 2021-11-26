@@ -1,0 +1,28 @@
+<div class="container-fluid mt-3">
+	<div class="row">
+		<div class="col-xl-12">
+      <h2>My Villains</h2>
+		</div>
+	</div>
+  <div class="row">
+		<div class="col-xl-5">
+      <div class="input-group">
+        <input #villainName class="form-control rounded" placeholder="Villain name" aria-label="Search" aria-describedby="search-addon" />
+        <button type="button" class="btn btn-primary" (click)="add(villainName.value); villainName.value=''">Add</button>
+      </div>
+      
+      <ul class="villains">
+        <li  *ngFor="let villain of villains">
+          <a routerLink="/detailVillain/{{villain.id}}">
+            <span class="badge">{{villain.id}}</span> {{villain.name}}
+          </a>
+          <button type="button" class="btn delete" title="delete villain" (click)="delete(villain)">x</button>
+        </li>
+      </ul>
+      
+		</div>
+    <div class=" fondo col-xl-7">
+
+    </div>
+	</div>
+</div>

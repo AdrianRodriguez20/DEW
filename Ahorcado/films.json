@@ -1,0 +1,85 @@
+[
+    
+  { 
+   "Titulo":"Fast And Furius",
+   "Director":"F. Gary Gray",
+   "Actores":"Vin Diesel",
+   "Estreno" :"12 de abril de 2017",
+   "Poster" :"https://pics.filmaffinity.com/R_pidos_y_furiosos_8-720946563-mmed.jpg",
+   "Imagenes" :"https://live.mrf.io/statics/i/ps/www.ecestaticos.com/imagestatic/clipping/56a/eb1/56aeb1a85564d3d752d87111e8e0d1c8/fast-and-furious-8-arrasa-ya-es-el-estreno-mas-taquillero-de-la-historia-del-cine.jpg?mtime=1579565836"
+ },
+ { 
+     "Titulo":"Joker",
+     "Director":"Todd Phillips",
+     "Actores":"Joaquin Phoenix",
+     "Estreno" :"4 de octubre de 2019 ",
+     "Poster" :"https://pics.filmaffinity.com/Joker-118854213-large.jpg",
+     "Imagenes" :"https://www.bandassonoras.co/wp-content/uploads/2019/10/maxresdefault-2-678x381.jpg"
+   },
+ { 
+     "Titulo":"Jason Bourne",
+     "Director":"Paul Greengrass",
+     "Actores":"Matt Damon",
+     "Estreno" :"29 de julio de 2016",
+     "Poster" :"https://pics.filmaffinity.com/jason_bourne-637012224-large.jpg",
+     "Imagenes" :"https://files.rcnradio.com/public/styles/image_834x569/public/2020-05/jeason_bourne_839_0.jpg?itok=9UmH-vQJ"
+   },
+   { 
+    "Titulo":"Harry Potter",
+    "Director":"David Yates",
+    "Actores":"Tom Felton",
+    "Estreno" :"15 de julio de 2011",
+    "Poster" :"https://pics.filmaffinity.com/Harry_Potter_y_las_reliquias_de_la_muerte_Parte_2-697522700-large.jpg",
+    "Imagenes" :"https://www.lanacion.com.ar/resizer/oO56uATshxC1_z_wRFDcRcdv2Ts=/768x0/filters:quality(70)/cloudfront-us-east-1.images.arcpublishing.com/lanacionar/WFMC5ZHTUZC7JJRXPMRSZJWCFY.jpg"
+  },
+  { 
+    "Titulo":"Titanic",
+    "Director":"James Cameron",
+    "Actores":"Leonardo Dicaprio",
+    "Estreno" :"8 de enero de 1998",
+    "Poster" :"https://www.abc.es/media/peliculas/000/044/428/titanic-1.jpg",
+    "Imagenes" :"https://uh.gsstatic.es/sfAttachPlugin/243660.jpg"
+  },
+  { 
+    "Titulo":"Avatar",
+    "Director":"James Cameron",
+    "Actores":"Zoe Saldaña",
+    "Estreno" :"18 de diciembre de 2009",
+    "Poster" :"https://vignette.wikia.nocookie.net/james-camerons-avatar/images/a/a7/Caratula_de_Avatar.png/revision/latest?cb=20150218032222&path-prefix=es",
+    "Imagenes" :"https://cnet2.cbsistatic.com/img/GLK9X-Eu9jJa5Ed2Ky3onw1SkgU=/940x0/2019/01/11/b251bf04-5bf8-469a-be8d-79489551460b/avatar-2009.jpg"
+  },
+  { 
+    "Titulo":"Vengadores",
+    "Director":"Anthony y Joe Russo",
+    "Actores":"Robert Downey Jr.",
+    "Estreno" :"26 de abril de 2019",
+    "Poster" :"https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg",
+    "Imagenes" :"https://hipertextual.com/files/2020/10/hipertextual-que-avengers-endgame-es-unica-pelicula-universo-marvel-que-da-sentido-nombre-superheroes-2020422459.jpg"
+  },
+  { 
+    "Titulo":"Jurassic World",
+    "Director":"Colin Trevorrow",
+    "Actores":"Chris Pratt",
+    "Estreno" :"12 de junio de 2015",
+    "Poster" :"https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQzsbrQ-CBlRMcqxEIuxg_ZJYj_da8ze8mqFRPUGG6o-jBh103S",
+    "Imagenes" :"https://gcdn.emol.cl/mitos-y-enigmas/files/2016/05/Jurassic-World-raptors-700x300.jpg"
+  },
+  { 
+    "Titulo":"Spectre",
+    "Director":"Sam Mendes",
+    "Actores":"Daniel Craig",
+    "Estreno" :"5 de noviembre de 2015",
+    "Poster" :"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.filmaffinity.com%2Fes%2Ffilm157007.html&psig=AOvVaw0fCvZGkZrP8eOHT8NI-_FM&ust=1606649825547000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCMiDypOTpe0CFQAAAAAdAAAAABAD",
+    "Imagenes" :"https://static01.nyt.com/images/2015/11/06/arts/06SPECTRE-copy/06SPECTRE-jumbo-v2.jpg"
+  },
+  { 
+    "Titulo":"Toy Story",
+    "Director":"Lee Unkrich",
+    "Actores":"Lee Unkrich",
+    "Estreno" :"23 de julio de 2010",
+    "Poster" :"https://pics.filmaffinity.com/Toy_Story_3-691147043-large.jpg",
+    "Imagenes" :"https://es.web.img3.acsta.net/r_640_360/newsv7/19/01/30/11/29/1331468.jpg"
+  }
+
+ 
+]

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        img {
+  display: block;
+  margin: auto;
+
+}
+.caja {
+font-family: sans-serif;
+font-size: 18px;
+font-weight: 300px;
+color: #ffffff;
+background: #2699f8;
+margin: 0 0 25px;
+overflow: hidden;
+padding: 20px;
+border-radius: 15px;
+border: 2px solid #123ad4;
+}
+select{
+height: 270px;
+font-size: 30px ;
+width: 400px;
+
+}
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <img src="https://static.wikia.nocookie.net/sims/images/7/77/Logo_Sims_series.png/revision/latest?cb=20160506041429&path-prefix=es" width=30%;>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-4">
+                <select class="form-select" multiple aria-label="multiple select example" id="nombres" size="6" multiple>
+                    <option value="Carlos">Carlos</option>
+                    <option value="Gonzalo">Gonzalo</option>
+                    <option value="Luisa">Luisa</option>
+                    <option value="Fernando">Fernando</option>
+                    <option value="Amancio">Amancio</option>
+                    <option value="Carolina">Carolina</option>
+                </select>
+            </div>
+            <div class="col-xl-4">
+
+                <div id="habitaciones">
+                    <button type='button' class='btn btn-secondary' id='Living Room'>Living Room</button>
+                    <button type='button' class='btn btn-secondary' id='Kitchen'>Kitchen</button>
+                    <button type='button' class='btn btn-secondary' id='Bathroom'>Bathroom</button>
+                    <button type='button' class='btn btn-secondary' id='Bedroom'>Bedroom</button>
+                </div>
+
+            </div>
+            <div class="col-xl-4">
+                <div id="historial">
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <script src="js/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h1>Lista de Artículos</h1>
+        </div>
+        <div class="col-3 article" *ngFor="let article of articles">
+            <a routerLink="/detail/{{article.id}}">
+                <div class="info">
+                    <img class="poster" src="{{ article.mainImage }}" />
+                    <h4>{{ article.name }}</h4>
+                </div>
+            </a>
+        </div>
+    </div>
+    
+</div>

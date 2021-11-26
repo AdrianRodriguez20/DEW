@@ -1,0 +1,82 @@
+/* villainsComponent's private CSS styles */
+.villains {
+    list-style-type: none;
+    padding: 0;
+    width: 18em;
+  }
+  .villains li {
+    position: relative;
+    cursor: pointer;
+    background: rgb(211,59,213);
+    background: linear-gradient(90deg, rgba(211,59,213,1) 0%, rgba(157,80,153,1) 34%, rgba(56,17,53,1) 66%); 
+    margin: .6em;
+    padding: .3em 0;
+    height: 40px;
+    border-radius: 4px;
+   
+  }
+  
+  .villains li:hover {
+    color: #607D8B;
+    background-color: #DDD;
+    left: .1em;
+  }
+  
+  .villains a {
+    color:white;
+    text-decoration: none;
+    position: relative;
+    display: block;
+    width: 250px;
+  }
+  
+  
+  .villains .badge {
+    display: inline-block;
+    font-size: small;
+    color: white;
+    padding: 1em 1em 0 0.7em;
+    background-color: #405061;
+    line-height: 1em;
+    position: relative;
+    top:-4.9px;
+    height: 40px;
+    min-width: 16px;
+    text-align: right;
+    margin-right: .8em;
+    border-radius: 4px 0 0 4px;
+  }
+  
+  button {
+    border: none;
+    height: 40.2px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    color:white;
+    font-size: 20px;
+  }
+  
+  
+  
+  button.delete {
+    position: relative;
+    left: 235px;
+    top:-45px;
+   
+  }
+  
+  .input-group{
+    width: 300px;
+  }
+  h2{
+    font-family: 'Merriweather', serif;
+  }
+
+  .fondo{
+    background-image: url(https://cdnb.artstation.com/p/assets/images/images/026/706/661/large/gyula-orosz-3psylon-deadpool.jpg?1589490423);
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    bottom: -120px;
+  }
